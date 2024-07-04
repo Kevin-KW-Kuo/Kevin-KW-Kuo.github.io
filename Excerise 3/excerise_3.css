@@ -31,7 +31,10 @@
     min-width: 26px;
 }
 
-.float_div div{
-    float: left; /* 使 div 元素水平排列 */
-    margin: 20px;
+div {
+    padding: 10px;
+}
+
+body {
+    display: flex;
 }
