@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' type='text/css' media='screen' href='excerise_3.css'>
-    <title>Excerise 2</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/excerise_3.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/common.css'>
+    <title>Excerise 3</title>
 </head>
 <body>
     <div>
         <div id="normal_table">
             <table>
                 <tr>
-                    <th rowspan="2"></th>
+                    <th scope="row" rowspan="2"></th>
                     <td colspan="2"></td>
                     <td></td>
                 </tr>
@@ -35,15 +36,15 @@
         <div id="normal_table">
             <table>
                 <tr>
-                    <th colspan="2" rowspan="2">交叉分析表</th>
-                    <th colspan="2">ID</th>
+                    <th scope="col" colspan="2" rowspan="2">交叉分析表</th>
+                    <th scope="col" colspan="2">ID</th>
                 </tr>
                 <tr>
                     <td>TW000001</td>
                     <td>TW000002</td>
                 </tr>
                 <tr>
-                    <th rowspan="2">SPI</th>
+                    <th scope="row" rowspan="2">SPI</th>
                     <td>不良片數</td>
                     <td>101</td>
                     <td>99</td>
@@ -58,6 +59,7 @@
     </div>
     <div id="color_table">
         <table>
+            <th style="display: none;"></th>
             <tr>
                 <td title="#330000" style="background-color:#330000;"></td>
                 <td title="#331900" style="background-color:#331900;"></td>
@@ -197,6 +199,9 @@
             </tr>
             
         </table>
+    </div>
+    <div class="footer">
+        <a href="../index.html">Homepage</a>
     </div>
 </body>
 </html>

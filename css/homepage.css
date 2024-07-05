@@ -1,5 +1,4 @@
 body {
-    font-family: Arial, sans-serif;
     color: #5f5f5f;
     letter-spacing: 2px;
     margin: 0 50px;
@@ -37,10 +36,6 @@ h1 {
 .bottom {
     margin: 0 50px;
     padding: 30px 0 30px 0;
-    color: black;
-}
-
-.homepage {
     color: black;
 }
 

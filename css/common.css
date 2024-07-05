@@ -1,0 +1,21 @@
+.a {
+    color: #8b00e0
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #cec471e5;
+    text-align: center;
+    padding: 15px;
+}
+
+.footer > a {   
+    color:black;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
