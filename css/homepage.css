@@ -42,3 +42,10 @@ h1 {
 #top_container {
     margin: 20px 0 50px 50px;
 }
+
+#logo {
+    position: absolute;
+    /* top: 0; */
+    right: 100px;
+    margin: 20px 0 50px 50px;
+}
