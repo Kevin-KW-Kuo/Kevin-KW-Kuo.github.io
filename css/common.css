@@ -19,3 +19,24 @@
 body {
     font-family: Arial, sans-serif;
 }
+
+.border_table {
+    border:black; /* 表格外框 */
+    border-spacing: 0px;
+    padding: 20px;
+    border-collapse: collapse; /* 合併邊框 */
+    margin-bottom: 20px; /* 添加底部邊框 */
+}
+
+.border_table > tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2px;
+    height: 24px;
+    min-width: 100px;
+}
+
+.no-break {
+    display: inline;
+    padding: 5px;
+}

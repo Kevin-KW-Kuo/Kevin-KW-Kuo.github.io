@@ -1,0 +1,29 @@
+.iframe_body {
+    background-color: #a0a0a0;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    width: 80vw;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.level1 {
+    padding: 8px;
+    background-color: #f00;
+}
+
+.level2 {
+    padding: 8px;
+    background-color: #00f;
+}
+
+.level3 {
+    padding: 8px;
+    background-color: #0f0;
+}
+
+#inner {
+    padding: 8px;
+    margin: 10px 50px;
+    border: 1px dashed #000;
+    background-color: #ddd;
+}
