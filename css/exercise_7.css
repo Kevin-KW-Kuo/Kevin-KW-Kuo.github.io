@@ -1,0 +1,63 @@
+body {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+.html-block {
+    margin:20px;
+    padding:3px;
+    background-color: #FFF0F0;
+    border: 1px solid gray
+}
+
+.head-block {
+    background-color:#DDDDDD;
+}
+
+.element {
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+.title-block {
+    background-color: rgb(241, 241, 241);
+}
+
+.body-block {
+    background-color:#DDDDDD;
+}
+
+.inline-bk-color {
+    background-color: rgb(241, 241, 241);
+}
+
+.no-border {
+    border: none;
+}
+
+.margin-block {
+    border: 2px dashed rgb(187, 187, 187);
+    background-color: rgb(241, 241, 241);
+    text-align: center;
+    padding: 15px 15px 30px 15px;
+    margin: 15px;
+}
+
+.border-block {
+    background-color: rgb(76, 175, 80);
+    padding: 5px 15px 15px 15px;
+    margin: 15px;
+}
+
+.padding-block {
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    margin: 5px 10px 10px 10px;
+}
+
+.content-block {
+    border: 2px dashed rgb(187, 187, 187);
+    background-color: rgb(255, 255, 255);
+    padding: 45px;
+    margin: 10px 30px 30px 30px;
+}
