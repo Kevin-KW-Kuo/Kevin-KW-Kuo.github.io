@@ -2,6 +2,11 @@
     color: #8b00e0
 }
 
+a:hover {
+    color: #9726dd;
+}
+
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -14,6 +19,10 @@
 
 .footer > a {   
     color:black;
+}
+
+.footer > a:hover {   
+    color:rgb(75, 70, 70);
 }
 
 body {

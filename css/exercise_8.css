@@ -1,0 +1,47 @@
+body {
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    background-color: #333;
+}
+
+#title {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.text_container {
+    width: 700px;
+    margin: 20px auto 50px;
+    text-align: center;
+    color: #fff8f1;
+}
+
+.yt_container {
+    text-align: center;
+}
+
+.door {
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.door_container {
+    text-align: center;
+}
+
+.thing_container {
+    margin: 30px;
+}
+
+#description {
+    font-family: Consolas, monaco, monospace;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.text_container > a {
+    color: #fd8e45;
+}
+
+.text_container > a:hover {
+    color: #ff6500;
+}
