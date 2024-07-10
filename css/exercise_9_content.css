@@ -1,0 +1,64 @@
+body {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: "Times New Roman", Times, serif;
+    background-color: rgba(245, 245, 220, 0.534);
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.container .title{
+    justify-content: center;
+}
+
+.title {
+    text-align: left;
+    width: 100%;
+}
+
+.title a:hover {
+    color: rgb(134, 134, 134);
+}
+
+.title a {
+    color:black
+}
+
+.title p {
+    font-family: serif;
+}
+
+.introduce p, ul, li, .title p {
+    font-size: 20px
+}
+
+li {
+    padding: 3px
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.0em;
+    margin-bottom: 20px;
+}
+
+.introduce {
+    text-align: left;
+    width: 100%;
+}
