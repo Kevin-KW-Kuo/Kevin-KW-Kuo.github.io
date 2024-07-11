@@ -1,0 +1,40 @@
+body {
+    background-color: bisque;
+    font-family: "Times New Roman";
+}
+
+.title {
+    text-align: center;
+}
+
+li {
+    padding: 10px;
+}
+
+.question {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.question h3 {
+    margin: 1px;
+    background-color: orange;
+}
+
+.option {
+    padding-left: 20px;
+}
+
+
+.button {
+    text-align: right;
+}
+
+button {
+    border-color: grey;
+}
+
+.question_container {
+    width: 50%;
+    margin: 0 auto;
+}
