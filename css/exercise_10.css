@@ -25,15 +25,6 @@ li {
     padding-left: 20px;
 }
 
-
-.button {
-    text-align: right;
-}
-
-button {
-    border-color: grey;
-}
-
 .question_container {
     width: 50%;
     margin: 0 auto;
