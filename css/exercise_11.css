@@ -1,0 +1,47 @@
+body {
+    background-color: bisque;
+    font-family: Arial;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+form {
+    font-size: 20px;
+}
+
+.title {
+    text-align: center;
+    border: 1px dashed black;
+    justify-self: center;
+}
+
+.question {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.question p {
+    margin: 1px;
+    margin-bottom: 5px;
+    background-color: orange;
+}
+
+.question_container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.answer-block {
+    padding-left: 40px;
+}
+
+.answer {
+    padding-bottom: 5px;
+}
+
+
+#submitButton {
+    padding-top: 20px;
+    text-align: right;
+}

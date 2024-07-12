@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/exercise_11.css">
+    <title>Exercise 11</title>
+</head>
+
+<body>
+    <div class="title">
+        <h1>My Questions ?</h1>
+    </div>
+
+    <form action="">
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            <div class="question">
+                <p>1. What's your name and email ?</p>
+                <div class="answer-block">
+                    <div class="answer">
+                        <input type="text" id="name" name="name" placeholder="Input your name">
+                    </div>
+                    <div class="answer">
+                        <input type="text" id="email" name="email" placeholder="Input your email">
+                    </div>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. What's your gender ?</p>
+                <div class="answer-block">
+                    <input type="radio" id="gender-male" name="gender" value="Male">
+                    <label for="gender-male">Male</label>
+                    <br>
+                    <input type="radio" id="gender-female" name="gender" value="Female">
+                    <label for="gender-female">Female</label>
+                    <br>
+                    <input type="radio" id="gender-other" name="gender" value="Other">
+                    <label for="gender-other">Other</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>3. What's your age ?</p>
+                <div class="answer-block">
+                    <select id="age" name="age">
+                        <option value="" disabled selected hidden>0-10</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <!-- Other Qusetion -->
+            <legend>Other Qusetion</legend>
+            <div class="question">
+                <p>1. How do you get around ?</p>
+                <div class="answer-block">
+                    <input type="checkbox" id="MRT" name="MRT" >
+                    <label for="MRT">MRT</label>
+                    <br>
+                    <input type="checkbox" id="Bus" name="Bus" >
+                    <label for="Bus">Bus</label>
+                    <br>
+                    <input type="checkbox" id="Bike" name="Bike" >
+                    <label for="Bike">Bike</label>
+                    <br>
+                    <input type="checkbox" id="Feet" name="Feet" >
+                    <label for="Feet">Feet</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. What's your favorite color ?</p>
+                <div class="answer-block">
+                    <input type="color" id="favcolor" name="favcolor" value="#000">
+                </div>
+            </div>
+            <div class="question">
+                <p>3. Write something about you ?</p>
+                <div class="answer-block">
+                    <textarea id="desctiption" name="desctiption" rows="10" cols="50"></textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <div id="submitButton">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <a href="../index.html">Homepage</a>
+    </div>
+</body>
+
+</html>
