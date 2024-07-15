@@ -1,0 +1,53 @@
+body {
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+}
+
+.card-container {
+    height: 150px;  /* 設定固定高度 */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0);
+}
+
+.card-container img{
+    padding: 10px;
+}
+
+.choice_block {
+    display: flex;
+}
+
+.red_block, .black_block {
+    width: 50%;
+    height: 150px;  /* 設定固定高度 */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+} 
+
+.red_block {
+    background-image: url("../image/card_image/red.png");
+}
+
+.black_block {
+    background-image: url("../image/card_image/black.png");
+}
+
+.red_place_block, .black_place_block{
+    border: 2px dashed yellow;
+    height: 120px;  /* 設定固定高度 */
+    width: 90%;
+    padding: 5px;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/exercise_12.css">
+    <script src="../js/exercise_12.js" defer></script>
+    <title>Exercise 12</title>
+</head>
+<body>
+    <div class="title">
+        <h1>Red or Black?</h1>
+        <p>Please help classify the cards below.</p>
+    </div>
+    <div class="card-container" ondrop="dropCardContainer(event)" ondragover="allowDrop(event)" role="none" >
+        <img id="card1" src="../image/card_image/card1.png" alt="Card 1" draggable="true" ondragstart="drag(event)">
+        <img id="card2" src="../image/card_image/card2.png" alt="Card 2" draggable="true" ondragstart="drag(event)">
+        <img id="card3" src="../image/card_image/card3.png" alt="Card 3" draggable="true" ondragstart="drag(event)">
+        <img id="card4" src="../image/card_image/card4.png" alt="Card 4" draggable="true" ondragstart="drag(event)">
+        <img id="card5" src="../image/card_image/card5.png" alt="Card 5" draggable="true" ondragstart="drag(event)">
+        <img id="card6" src="../image/card_image/card6.png" alt="Card 6" draggable="true" ondragstart="drag(event)">
+    </div>
+    <div class="choice_block">
+        <div class="red_block" >
+            <div class="red_place_block" ondrop="dropRedBlock(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="black_block">
+            <div class="black_place_block" ondrop="dropBlackBlock(event)" ondragover="allowDrop(event)"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="../index.html">Homepage</a>
+    </div>
+</body>
+</html>
