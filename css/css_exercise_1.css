@@ -1,0 +1,95 @@
+.table-container {
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+.grid-container {
+    display: grid;
+    width: 50%;
+    height: 250px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1px;
+    background-color: black;
+    padding: 1px;
+}
+
+.color-grid-container {
+    display: grid;
+    width: 50%;
+    height: 450px;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 1px;
+    background-color: white;
+    padding: 1px;
+}
+
+.color-grid-container > div {
+    border: 1px solid black;
+}
+
+
+.grid-container > div, .color-grid-container > div {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.item1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.item2 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.item7 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.item12 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+.text {
+    height: 80%;
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.text:hover {
+    border: 2px solid rgb(103, 206, 219);
+}
+
+.analysis-item1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.analysis-item2 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+.analysis-item5 {
+    grid-row-start: 3;
+    grid-row-end: 5;
+}
+
+.analysis-hover-item:hover {
+    background-color: rgb(114, 221, 114);
+    color: red;
+}
