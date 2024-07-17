@@ -14,11 +14,11 @@ caption {
 }
 
 /* 斑馬紋效果 */
-tr:nth-child(n+1) {
+tr:nth-child(3n+1) {
     background-color: rgb(252, 232, 236);
 }
 
-tr:nth-child(2n) {
+tr:nth-child(3n+2) {
     background-color: rgb(216, 246, 250);
 }
 
