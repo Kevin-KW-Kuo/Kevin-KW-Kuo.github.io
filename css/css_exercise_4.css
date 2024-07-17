@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.grid-table {
+    margin: 0 auto;
+    display: grid;
+    width: 70%;
+    grid-template-columns: repeat(6, 1fr) 2fr; /* 前六列 1fr, 最後一列 2fr */
+    border-collapse: collapse;
+}
+
+.grid-table > div {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.grid-table > div:not(.raw-data) {
+    padding: 8px;
+    text-align: center;
+}
+
+.grid-table > .raw-data > span {
+    margin-right: 5px;
+}
+
+.header {
+    border-top: 1px solid #ccc;
+    font-weight: bold;
+}
+
+.raw-data {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.grid-table > div:hover {
+    background-color: #f1f1f1;
+}
+
+.green {
+    background-color: green;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+.grey {
+    background-color: grey;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid black;
+}
