@@ -1,0 +1,55 @@
+body {
+    margin-top: 5%;
+    margin-left: 37%;
+    margin-right: 37%;
+    border: none;
+    border-radius: 10px;
+}
+
+.calculator-screen {
+    background-color: #000;
+    text-align: right;
+    color: #fff;
+    height: 150px;
+    width: 100%;
+    font-size: 50px;
+    box-sizing: border-box;
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 設置四列，每列的寬度為1fr */
+    background-color: rgb(161, 161, 161);
+}
+
+.calculator-keys button {
+    border: 1px solid gray;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.equal-sign {
+    grid-area: 5 / 3 / span 1 / span 2;
+}
+
+.calculator-keys .operator {
+    background-color: rgb(230, 230, 230);
+}
+
+.calculator-keys :not(.operator) {
+    background-color: rgb(182, 182, 182);
+}
+
+.calculator-keys .equal-sign {
+    background-color: orange 
+}
+
+.calculator-keys button:hover  {
+    background-color: #b6dcfd;
+}
+
+.calculator-keys button:active  {
+    background-color: #96ceff;
+}
