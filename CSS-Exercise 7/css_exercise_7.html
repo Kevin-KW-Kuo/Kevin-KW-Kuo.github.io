@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_7.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <title>CSS Exercise 7</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title-container">
+            <div id="sign-in" class="text">Sign in</div>
+            <div id="register" class="text">Register</div>
+        </div>
+
+        <div class="info-container">
+            <div class="input-container">
+                <label for="name-email">Username or Email</label><br>
+                <input type="text" id="name-email" name="name-email" placeholder="user" title="Username or Email">
+                <i class="fas fa-user input-icon" title="Username or Email"></i>
+            </div>
+            <div class="input-container">
+                <label for="pwd">Password</label><br>
+                <input type="text" id="pwd" name="pwd" placeholder="password" title="Password">
+                <i class="fa-solid fa-lock input-icon" title="Password"></i>
+            </div>
+
+            <div class="account-setting-container">
+                <div class="setting-left">
+                    <input type="checkbox" name="remember-me" id="remember-me" value="Remember me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="setting-right">
+                    <a href="#" target="_blank">Forget your password?</a>
+                </div>
+            </div>
+
+            <div class="sign-in-container">
+                <button id="sign-in-button" name="sign-in-button" value="sign-in" onclick="signin()">Sign in</button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <a href="../index.html">Homepage</a>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function signin() {
+        alert("sign in!");
+    }
+</script>

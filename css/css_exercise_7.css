@@ -1,0 +1,143 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    flex-direction: column;
+    font-size: 25px;
+}
+
+.title-container,
+.info-container {
+    width: 40%;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    height: 50px;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px 5px 0 0;
+}
+
+.title-container div {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid rgb(192, 192, 192);
+}
+
+#sign-in {
+    border-bottom: 3px solid rgb(95, 105, 189);
+}
+
+.title-container div:last-child {
+    border-right: none;
+}
+
+.title-container>.text {
+    display: flex;
+    height: 100%;
+}
+
+.info-container {
+    border: 1px solid rgb(192, 192, 192);
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+.input-container,
+.account-setting-container,
+.sign-in-container {
+    color: gray;
+    position: relative;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 35px;
+    /* 增加右側內邊距，為圖標留出空間 */
+    margin-top: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.input-icon {
+    position: absolute;
+    top: 60%;
+    right: 10px;
+    font-size: 18px;
+    /* 調整圖標大小 */
+}
+
+.account-setting-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+
+.account-setting-container .setting-left {
+    display: flex;
+    align-items: center;
+}
+
+.account-setting-container .setting-right {
+    display: flex;
+    align-items: center;
+}
+
+#sign-in-button {
+    width: 100%;
+    background-color: rgb(99, 177, 99);
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    height: 40px;
+    color: white
+}
+
+#sign-in-button:active {
+    background-color: rgb(59, 141, 59);
+}
+
+.setting-left input[type="checkbox"] {
+    display: none;
+}
+
+/* 創建自定義checkbox外觀 */
+.setting-left label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.setting-left label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #2dc284;
+    border-radius: 5px;
+    background: #fff;
+}
+
+/* 創建勾選標記 */
+.setting-left input[type="checkbox"]:checked+label:after {
+    content: '\2714';
+    position: absolute;
+    left: 4px;
+    top: -1px;
+    color: #c74d4d;
+    font-size: 15px;
+}
