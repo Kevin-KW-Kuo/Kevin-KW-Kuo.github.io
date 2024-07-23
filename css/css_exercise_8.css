@@ -1,0 +1,152 @@
+.container {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.header ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    gap: 10px;
+    /* li 元素之間的間隔 */
+}
+
+.header ul li {
+    text-align: left;
+}
+
+.header ul li a {
+    text-decoration: none;
+    color: #999;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.header ul li a .number {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.header ul li a .underline {
+    width: 100%;
+    /* 使底線與 a 標籤等寬 */
+    height: 2px;
+    background-color: #9c9c9c;
+    margin: 5px 0;
+}
+
+.header ul li a .text {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.header ul li .active {
+    color: rgb(248, 81, 81);
+}
+
+.header ul li .active .underline {
+    background-color: rgb(248, 81, 81);
+}
+
+.header ul li .active .number {
+    font-size: 50px;
+}
+
+.header ul li :not(.active) .number {
+    padding-top: 31px;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}
+
+.title-container span {
+    padding-left: 12px;
+    color: #9c9c9c;
+}
+
+.sender-info-container ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+::placeholder {
+    color: #9c9c9c;
+}
+
+.sender-info-container ul li {
+    color: #7a7a7a;
+    padding: none;
+    padding-right: 200px;
+    padding-bottom: 20px;
+}
+
+.sender-info-container ul li input {
+    border: none;
+    border-bottom: 1px solid #9c9c9c;
+    padding: 5px;
+}
+
+.sender-info-container ul .two-column,
+.sender-info-container ul .one-column {
+    width: 50%;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.sender-info-container ul .two-column input,
+.sender-info-container ul .one-column,
+.sender-info-container ul .one-column input {
+    width: 100%;
+}
+
+.required {
+    color: rgb(248, 81, 81);
+    padding: 3px;
+}
+
+input:invalid {
+    outline: none;
+    border-bottom: 2px solid rgb(248, 81, 81);
+    box-shadow: 0 0 5px rgb(248, 81, 81);
+}
+
+.sender-info-container .invalid {
+    border-bottom: 2px solid rgb(248, 81, 81);
+    box-shadow: 0 0 5px rgb(248, 81, 81);
+}
+
+
+.sender-info-container ul li input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(248, 81, 81);
+}
+
+.sender-info-form {
+    position: relative;
+}
+
+.next-button {
+    background-color: rgb(248, 81, 81);
+    border: none;
+    border-radius: 30px;
+    height: 50px;
+    width: 300px;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 100px;
+}
+
+.next-button i{
+    position: absolute;
+    right: 20px;
+}

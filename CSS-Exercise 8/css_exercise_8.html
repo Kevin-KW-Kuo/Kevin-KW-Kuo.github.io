@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_8.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <script src="../js/css_exercise_8.js" defer></script>
+    <title>CSS Exercise 8</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <ul>
+                <li>
+                    <a class="active" href="#sender-info">
+                        <span class="number">01</span>
+                        <span class="underline"></span>
+                        <span class="text">寄件人信息</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#recipient-info">
+                        <span class="number">02</span>
+                        <span class="underline"></span>
+                        <span class="text">收件人信息</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#reserve-info">
+                        <span class="number">03</span>
+                        <span class="underline"></span>
+                        <span class="text">預約信息</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#complete">
+                        <span class="number">04</span>
+                        <span class="underline"></span>
+                        <span class="text">完成下單</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="title-container">
+            <h3>寄方信息</h3>
+            <span>標*為必填</span>
+        </div>
+        <form class="sender-info-form" id="sender-form">
+            <div class="sender-info-container">
+                <ul>
+                    <li class="two-column">
+                        <label for="name"><span class="required">*</span>姓名</label><br>
+                        <input type="text" pattern="^[^\s]*$" id="name" name="name" placeholder="請填寫聯繫人姓名" title="聯繫人姓名">
+                    </li>
+                    <li class="two-column">
+                        <label for="company">公司名稱</label><br>
+                        <input type="text" pattern="^[^\s]*$" id="company" name="company" placeholder="請填寫公司名稱" title="公司名稱">
+                    </li>
+                    <li class="two-column">
+                        <label for="cellphone-number">手機號碼</label><br>
+                        <input type="text" pattern="09\d{2}(\d{6}|-\d{3}-\d{3})" id="cellphone-number" name="cellphone-number" placeholder="請填寫手機號碼" title="手機號碼">
+                    </li>
+                    <li class="two-column">
+                        <label for="phone-number">市話電話</label><br>
+                        <input type="text" pattern="(\d{2,3}-?|\(\d{2,3}\))\d{3,4}-?\d{4}" id="phone-number" name="phone-number" placeholder="請填寫市話電話" title="市話電話">
+                    </li>
+                    <li class="one-column">
+                        <label for="city"><span class="required">*</span>縣市區</label><br>
+                        <input type="text" pattern="^[^\s]*$" id="city" name="city" placeholder="請選擇所在區域, 例如: 台灣-台北市-大同區" title="縣市區">
+                    </li>
+                    <li class="one-column">
+                        <label for="address"><span class="required">*</span>詳細地址</label><br>
+                        <input type="text" pattern="^[^\s]*$" id="address" name="address" placeholder="請填寫所在街道以及詳細地址" title="詳細地址">
+                    </li>
+                    <li class="one-column">
+                        <label for="id-number">統一編號或身分證字號(出口必須填寫)</label><br>
+                        <input type="text" pattern="^[^\s]*$" id="id-number" name="id-number" placeholder="公司請填寫統一編號, 個人請填寫身分證字號" title="統一編號或身分證字號">
+                    </li>
+                </ul>
+            </div>
+            <button class="next-button" type="button" onclick="nextStep()">
+                下一步<i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <a href="../index.html">Homepage</a>
+    </div>
+</body>
+</html>
