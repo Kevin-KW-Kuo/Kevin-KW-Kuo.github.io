@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>卡片 (Cards)</h1>
+    <p>Bootstrap 的卡片提供了一個有彈性、可擴展的內容容器，並具有多種變化及選擇。</p>
+
+    <h2>關於</h2>
+    <p>卡片是一個有彈性且可擴展的內容容器。它包含了頁首和頁尾的選項、多樣化的內容、上下文的背景顏色以及強大的展示選項。如果你很熟悉 Bootstrap 3，那卡片將取代舊有的 panel, well 和
+        thumbnail。與那些元件類似的功能已經都整合到卡片內了</p>
+
+    <h2>範例</h2>
+    <p>卡片被設計成盡可能的少用一些標記和樣式，但它仍然可以提供許多的控制項和自定義。使用 flexbox 構建，它們可以更方便的對齊，並與其它的 Bootstrap 元件良好混合。預設中它並沒有
+        <code>margin</code>，所以可以依需求加入 spacing 通用類別。</p>
+    <p>以下是一個具有混合內容和固定寬度的基本卡片範例。卡片如果沒有固定的寬度，那麼它們將自然填充其父元素的全部寬度。這可以透過我們的各種縮放選項輕鬆調整。</p>
+    <div class="card" style="width: 18rem;">
+        <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <h2>內容設計</h2>
+    <p>卡片支援各種內容，包含圖片、文字、清單群組、連結等。以下為卡片支援的範例。</p>
+
+    <h2>主要區塊</h2>
+    <p>卡片的建構區塊為 .card-body。當你需要在卡片填充內容的時候請使用它。</p>
+    <div class="card">
+        <div class="card-body">
+            This is some text within a card body.
+        </div>
+    </div>
+
+    <h2>標題 文字 連結</h2>
+    <p>在 h* 標籤中添加 <code>.card-title</code> 以使用卡片標題。同樣的，在 a 標籤中加入 <code>.card-link</code> 並使連結彼此相鄰。</p>
+    <p>在 h* 標籤中加入 <code>.card-subtitle</code> 以使用副標題。如果 <code>.card-title</code> 以及 <code>.card-subtitle</code> 元件被放在
+        <code>card-body</code> 裡面，它們將會對齊良好。
+    </p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+
+    <h2>圖片</h2>
+    <p>設定 <code>.card-img-top</code> 將會把圖片放在卡片的頂部。使用 <code>.card-text</code> 可以將文字內容可以添加到卡片中。<code>.card-text</code>
+        中的文本也可以用標準的 HTML 標籤設計樣式。</p>
+    <div class="card" style="width: 18rem;">
+        <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+
+    <h2>列表群組</h2>
+    <p>使用 <code>list-group-flush</code> 在卡片內建立列表群組。</p>
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+        </ul>
+    </div>
+    <br>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Featured
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+        </ul>
+    </div>
+    <br>
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-footer">
+            Card footer
+        </div>
+    </div>
+
+
+    <h2>混合樣式</h2>
+    <p>混合並搭配多個內容形式，用來創建你所需要的卡片。以下範例將圖片樣式、區塊、文字樣式以及列表群組全部包裝在一個固定寬度的卡片中。</p>
+    <div class="card" style="width: 18rem;">
+        <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+
+    <h2>頁首和頁尾</h2>
+    <p>在卡片內添加選擇性的頁首和/或頁尾。</p>
+    <div class="card">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <br>
+    <p>卡片頁首的樣式可以透過在 <h*> 元素添加 .card-header 來調整。</p>
+    <div class="card">
+        <h5 class="card-header">Featured</h5>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">
+            Quote
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>A well-known quote, contained in a blockquote element.</p>
+                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <br>
+    <div class="card text-center">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+
+    <h2>縮放</h2>
+    <p>卡片預設沒有特定的起始 <code>width</code>，除非另有聲明，否則它們的寬度將是 100％。可以根據需求，透過自定義 CSS、網格系統、Sass mixins grid 或通用類別來調整。</p>
+
+    <h2>使用網格標記</h2>
+    <p>依據需求使用網格系統，將卡片包裝於欄與列之中。</p>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>使用通用類別</h2>
+    <p>使用我們的幾個可調整大小的通用類別來快速設置卡片的寬度。</p>
+    <div class="card w-75">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Button</a>
+        </div>
+    </div>
+    
+    <div class="card w-50">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Button</a>
+        </div>
+    </div>
+
+    <h2>使用自定義 CSS</h2>
+    <p>在樣式表中使用自定義的 CSS 或使用行內樣式設置寬度。</p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <h2>文字對齊</h2>
+    <p>可以透過文字對齊類別更改任何卡片的整體或特定部分的文本對齊方式。</p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <br>
+    <div class="card text-center" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <br>
+    <div class="card text-end" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <h2>導覽</h2>
+    <p>使用 Bootstrap 的導覽元件在卡片的頁首（或區塊）添加一些導覽。</p>
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="true" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <br>
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <h2>圖片</h2>
+    <p>卡片包含一些用來處理圖片的選項。選擇在卡片的任一端附加 “image caps”，用卡片內容覆蓋圖片，或者只是將圖像嵌入到卡中。</p>
+
+    <h2>Image caps</h2>
+    <p>與頁首或頁尾相似，卡片可以包含頂部或是底部的 “Image caps”，即圖片是位於卡片的頂部或是底部</p>
+    <div class="card mb-3" style="width: 18rem;">
+        <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+                This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+                This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+    </div>
+
+    <h2>圖片 overlay</h2>
+    <p>將圖片轉換為卡片背景，並疊加卡片的文字。 根據圖片，你可以選擇是否需要額外的樣式或通用類別。</p>
+    <div class="card bg-white text-white" style="width: 18rem;">
+        <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+        <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+                This content is a little bit longer.</p>
+            <p class="card-text">Last updated 3 mins ago</p>
+        </div>
+    </div>
+    <p><strong>請注意，內容不應大於圖片的高度。如果內容大於圖片，則內容將顯示在圖片外面。</strong></p>
+
+    <h2>水平卡片</h2>
+    <p>結合使用網格以及通用類別，可以讓卡片以行動友善且響應式的方法呈現水平狀態。在下面的範例中，我們使用 <code>.g-0</code> 移除網格的 gutters, 並使用 <code>.col-md-*</code> 類別讓卡片在 <code>md</code> 斷點之後呈現水平。根據卡片內容，將可能會需要一些額外的調整。</p>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2>卡片樣式</h2>
+    <p>卡片包含許多用來自定義背景、邊框、顏色的選項。</p>
+
+    <h2>背景和顏色</h2>
+    <p>使用 文字顏色 和 背景通用類別 來改變卡片外觀。</p>
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Success card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Danger card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Warning card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card text-dark bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Info card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Dark card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+
+    <h2>邊框</h2>
+    <p>使用 邊框通用類別 來改變卡片的 <code>border-color</code>。你也能在 <code>.card</code> 父層設置 <code>.text-{color}</code>
+        類別，或是如以下範例設置在卡片內容的子集當中。</p>
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body text-primary">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body text-secondary">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body text-success">
+            <h5 class="card-title">Success card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card border-danger mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body text-danger">
+            <h5 class="card-title">Danger card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card border-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Warning card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card border-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Info card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card border-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body text-dark">
+            <h5 class="card-title">Dark card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+
+    <h2>Mixin 通用類別</h2>
+    <p>也可以依照需求更改卡片頁首、頁尾的邊框，並能使用 <code>bg-transparent</code> 來移除它們的 <code>background-color</code>。</p>
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-transparent border-success">Header</div>
+        <div class="card-body text-success">
+            <h5 class="card-title">Success card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+        <div class="card-footer bg-transparent border-success">Footer</div>
+    </div>
+
+    <h2>卡片排版</h2>
+    <p>除了對卡片內容進行樣式設計以外，Bootstrap 還提供一些用於卡片排版的選項。目前為止，這些排版選項還不是響應式的</p>
+
+    <h2>卡片群組</h2>
+    <p>使用卡片群組將一系列卡片呈現為具有等寬、高欄位的單一、連結元素。卡片群組由堆疊開始，並透過 <code>display: flex;</code> 從 <code>sm</code> 的斷點後開始以統一的尺寸相連接。</p>
+    <div class="card-group">
+        <div class="card">
+            <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <h2>網格卡片</h2>
+    <p>使用 Bootstrap 的網格系統以及 <code>.row-cols</code> 類別 來控制每行應該顯示多少網格欄 (用於包裝卡片)。以下面的例子來說，<code>.row-cols-1</code> 將卡片佈置為一欄，而
+        <code>.row-cols-md-2</code> 將會從 md 的斷點後開始將四個卡片設置為等寬、跨多行。</p>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p>更改為 <code>.row-cols-3</code>，則會看到第四張卡片被換行。</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p>如果需要相等高度時，把 <code>.h-100</code> 添加於卡片上。如果希望卡片預設就是等高，可以在 Sass 設置 <code>$card-height: 100%</code>。</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a short card.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p>如同卡片群組，卡片頁尾也會自動對齊。</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="../image/cat.jpg" class="card-img-top" alt="cat.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                        content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Masonry</h2>
+    <p>在 <code>v4</code> 版本我們僅使用 CSS 技術來模仿 Masonry 欄位效果，但這樣的技術帶來了許多不愉快的副作用。如果你想要在 <code>v5</code> 中使用這種排版，則可以使用 Masonry 的插件。Mansory 並沒有被包括於 Bootstrap，但我們有製作一個 demo 範例來幫助你開始使用它。</p>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

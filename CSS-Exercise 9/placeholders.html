@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeholders</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>佔位符 (Placeholders)</h1>
+    <p>為你的元件或頁面使用加載佔位符來呈現可能在載入的內容。</p>
+
+    <h2>關於</h2>
+    <p>laceholder 可以用於增加應用程式的體驗。他們只使用 HTML 和 CSS 來建構，這意味著不需使用 JavaScript 來創建他們。但是，將會需要一些自定義 JavaScript 來切換他們的可見性。他們的外觀、顏色和大小可以通過通用類別輕鬆客製化。</p>
+    <div class="card">
+        <img src="../image/cat.jpg" alt="cat.jpg" width="50%" height="45%">
+    
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    
+    <div class="card" aria-hidden="true">
+        <img src="../image/cat.jpg" alt="cat.jpg" width="50%" height="45%">
+        <div class="card-body">
+            <h5 class="card-title placeholder-glow">
+                <span class="placeholder col-6"></span>
+            </h5>
+            <p class="card-text placeholder-glow">
+                <span class="placeholder col-7"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-6"></span>
+                <span class="placeholder col-8"></span>
+            </p>
+            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+        </div>
+    </div>
+    
+    <h2>如何運作</h2>
+    <p>使用 <code>.placeholder</code> 類別和網格類別 (例如 <code>.col-6</code>) 設定 <code>width</code> 來製作 placeholder。他們可以替換元素內的文字或是作為修飾符類別添加到現有的元件中。</p>
+    <p>我們通過 <code>::before</code> 將額外的樣式應用到 <code>.btn</code> 來確保 <code>height</code> 正確呈現。你可以根據需要為其他情況擴展此模式，或添加 <code>&amp;nbsp;</code> 在元素中來反映實際文本在其位置呈現時的高度。</p>
+    <p aria-hidden="true">
+        <span class="placeholder col-6"></span>
+    </p>
+    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a>
+    <div>
+        使用 <code>aria-hidden="true"</code> 僅表示該元素應該對螢幕閱讀器隱藏。Placeholder 的 <em>加載</em> 行為取決於作者如何實際使用 placeholder 樣式、計畫如何更新內容等。可能需要一些 JavaScript 程式碼來 <em>交換</em> placeholder 的狀態並通知 AT 使用者更新。
+    </div>
+    <br><br>
+    <h3>Width</h3>
+    <p>你可以通過網格類別、寬度通用類別或是行內樣式改變 <code>width</code>。</p>
+    <span class="placeholder col-6"></span>
+    <span class="placeholder w-75"></span>
+    <span class="placeholder" style="width: 25%;"></span>
+    <br><br>
+    <h3>Color</h3>
+    <p>在預設情況下，<code>placeholder</code> 使用 <code>currentColor</code>。這可以使用自定義顏色或通用類別來覆蓋。</p>
+    <span class="placeholder col-12"></span>
+    <span class="placeholder col-12 bg-primary"></span>
+    <span class="placeholder col-12 bg-secondary"></span>
+    <span class="placeholder col-12 bg-success"></span>
+    <span class="placeholder col-12 bg-danger"></span>
+    <span class="placeholder col-12 bg-warning"></span>
+    <span class="placeholder col-12 bg-info"></span>
+    <span class="placeholder col-12 bg-light"></span>
+    <span class="placeholder col-12 bg-dark"></span>
+    <br><br>
+    <h3>Sizing</h3>
+    <p><code>.placeholder</code> 的大小基於父元素的排版樣式。使用大小修飾符自定義他們：<code>.placeholder-lg</code>、<code>.placeholder-sm</code> 或 <code>.placeholder-xs</code>。</p>
+    <span class="placeholder col-12 placeholder-lg"></span>
+    <span class="placeholder col-12"></span>
+    <span class="placeholder col-12 placeholder-sm"></span>
+    <span class="placeholder col-12 placeholder-xs"></span>
+    <br><br>
+    <h3>動畫</h3>
+    <p>使用 <code>.placeholder-glow</code> 或 <code>.placeholder-wave</code> 為 placeholder 製作動畫，來更好地傳達某些內容正在 <em>積極</em> 加載的感覺。</p>
+    <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+    </p>
+    
+    <p class="placeholder-wave">
+        <span class="placeholder col-12"></span>
+    </p>
+
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+

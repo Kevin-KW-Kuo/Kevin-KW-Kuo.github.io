@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapse</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>折疊 (Collapse)</h1>
+    <p>在專案中透過 Boostrap 的類別及 JavaScript 插件切換內容的可視性</p>
+
+
+    <h2>如何運作</h2>
+    <p>JavaScript 的摺疊插件被用於顯示和隱藏內容。按鈕、錨點被用作為觸發器，對應到需要被切換的元素上。折疊一個元素會將它的 <code>height</code> 從當前的值轉換為 <code>0</code>。基於 CSS 處理動畫的方式，你不能在帶有 <code>.collapse</code> 的元素上使用 <code>padding</code>; 相反的，應該把它作為獨立的包裝元素。</p>
+    <div>
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+
+    <h2>範例</h2>
+    <p>點擊以下按鈕，透過改變 Class 來顯示及隱藏另一個元素：</p>
+    <ol>
+        <li><code>.collapse</code> 隱藏內容。</li>
+        <li><code>.collapsing</code> 會在轉換的過程中被套用。</li>
+        <li><code>.collapse.show</code> 顯示內容。</li>
+    </ol>
+    <p>通常，我們建議使用帶有 <code>data-bs-target</code> 屬性的按鈕。從語義的角度來看，雖然不建議這樣做，但您也可以使用帶有 <code>href</code> 屬性 (和 <code>role="button"</code> ) 的連結。在這兩種情況下，都需要 <code>data-bs-toggle="collapse"</code>。</p>
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            Link with href
+        </a>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            Button with data-bs-target
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user
+            activates the relevant trigger.
+        </div>
+    </div>
+
+    <h2>水平</h2>
+    <p>Collapse 也支持水平折疊。添加 <code>.collapse-horizontal</code> 類別來轉換 <code>width</code> 而不是 <code>height</code>，並在子元素上設定 <code>width</code>。隨意撰寫你自己的自定義 Sass、使用行內樣式或是我們的 <a href="/docs/5.1/utilities/sizing/">width 通用類別</a>.</p>
+    <div>
+        請注意，雖然下面的範例設定了 <code>min-height</code>，但這只是避免在我們的文檔中過度重繪，並不是明確要求的。 <strong>只需要子元素的 <code>width</code> 就好。</strong>
+    </div>
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
+            aria-expanded="false" aria-controls="collapseWidthExample">
+            Toggle width collapse
+        </button>
+    </p>
+    <div style="min-height: 120px;">
+        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body" style="width: 300px;">
+                This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+            </div>
+        </div>
+    </div>
+
+    <h2>多個目標</h2>
+    <p><code>&lt;button&gt;</code> 或 <code>&lt;a&gt;</code> 標籤可以用來顯示與隱藏元素，需要在它們的 <code>data-bs-target</code> 或是 <code>href</code> 屬性內部引用選擇器。同一個元素可以被多個 <code>&lt;button&gt;</code> 或 <code>&lt;a&gt;</code> 控制以顯示或隱藏，只要它們都有透過 <code>data-bs-target</code> 或是 <code>href</code> 對其進行引用。</p>
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+            aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2"
+            aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+            aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    Some placeholder content for the first collapse component of this multi-collapse example. This panel is
+                    hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    Some placeholder content for the second collapse component of this multi-collapse example. This panel is
+                    hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>親和性</h2>
+    <p>確保有在控制元素中添加 <code>aria-expanded</code>。該屬性明確地向螢幕閱讀器、類似的輔助技術之控制元件傳達可折疊元素的當前狀態。如果可折疊元素預設為關閉，則控制項元素上的屬性值應為 <code>aria-expanded="false"</code>; 如果您使用 <code>show</code> 將可折疊元素設置為預設打開，則應在控制項上設置 <code>aria-expanded="true"</code>。插件將根據可折疊元素目前的狀態 (開啟與否) 自動切換控制項上的這個屬性 (透過 JavaScript，或是當使用者觸發了綁定到相同折疊元素的另一個控制項元素)。如果控制的 HTML 元素不是按鈕 (例如: <code>&lt;a&gt;</code> 或 <code>&lt;div&gt;</code>)，那麼 <code>role="button"</code> 屬性應該被加到元素中。</p>
+    <p>如果你的控制元素鎖定了一個單一的可折疊元素 (即 <code>data-bs-target</code> 屬性指向的是 <code>id</code> 選擇器)，則應該在控制元素上添加 <code>aria-controls</code> 屬性，且內部包含了可折疊元素之 <code>id</code>。現代的螢幕閱讀器、類似的輔助技術都利用此屬性為用戶提供額外的快捷方式以直接導航到可折疊元素。</p>
+    <p>請注意，Bootstrap 當前的折疊應用未涵蓋 <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#accordion">WAI-ARIA Authoring Practices 1.1 accordion pattern</a> 所描述的多種 <em>選擇性的</em> 鍵盤操作，你需要自訂 JavaScript 來實現這些內容。</p>
+
+    <h2>Sass</h2>
+    <h3>Variables</h3>
+    <div>
+        <pre>
+            <code>
+                $transition-collapse:         height .35s ease;
+                $transition-collapse-width:   width .35s ease;
+            </code>
+        </pre>
+    </div>
+    <h3>Classes</h3>
+    <p>Collapse transition 類別可以在 <code>scss/_transitions.scss</code> 中找到，因為它們在多個元件之間共享 (collapse 和 accordion)。</p>
+    <div class="highlight">
+        <pre>
+            <code>
+                .collapse {
+                    &:not(.show) {
+                        display: none;
+                    }
+                }
+
+                .collapsing {
+                    height: 0;
+                    overflow: hidden;
+                    @include transition($transition-collapse);
+                
+                    &.collapse-horizontal {
+                        width: 0;
+                        height: auto;
+                        @include transition($transition-collapse-width);
+                    }
+                }
+            </code>
+        </pre>
+    </div>
+
+    <h2>用法</h2>
+    <p>折疊插件使用一些 Class 來處理這些繁雜工作。</p>
+    <ul>
+        <li><code>.collapse</code> 隱藏內容。</li>
+        <li><code>.collapse.show</code> 顯示內容。</li>
+        <li><code>.collapsing</code> 會在轉換開始時被加入，並在結束的時候被移除。</li>
+    </ul>
+    <p>這些類別可以在 <code>_transitions.scss</code> 中被找到.</p>
+
+    <h2>透過資料屬性</h2>
+    <p>只需將 <code>data-bs-toggle="collapse"</code> 以及 <code>data-bs-target</code> 加入元素即可自動指定控制一個或多個可折疊元素。<code>data-bs-target</code> 屬性接受 CSS 選擇器以套用摺疊。請確保有在可折疊元素上添加 <code>collapse</code> 類別。如果希望它預設是打開的，加上額外的類別 <code>.show</code>。</p>
+    <p>要將 accordion-like group management 加到可折疊區域，請添加 data 屬性 <code>data-bs-parent="#selector"</code>。關於更多詳細資訊，請參閱 <a href="/docs/5.1/components/accordion/">accordion 頁面</a>。</p>
+
+    <h2>透過 JavaScript</h2>
+    <p>透過以下語法手動啟用:</p>
+    <pre>
+        <code>
+            var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+            var collapseList = collapseElementList.map(function (collapseEl) {
+                return new bootstrap.Collapse(collapseEl)
+            })
+        </code>
+    </pre>
+
+    <h2>選項</h2>
+    <p>選項可以透過資料屬性或是 JavaScript 加入。對於資料屬性，將選項名稱加入 <code>data-bs-</code>, 如 <code>data-bs-parent=""</code>。</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>parent</code></td>
+                <td>selector | jQuery object | DOM element </td>
+                <td><code>false</code></td>
+                <td>如果加入了 parent，則當可折疊物件為顯示時，指定父項下的所有可折疊元素將被關閉。（類似于傳統的折疊控制項行為 - 這取決於 <code>card</code>）。該屬性必須在目標可折疊區域上設置。
+                </td>
+            </tr>
+            <tr>
+                <td><code>toggle</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>切換可折疊元素</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>方法</h2>
+    <div class="bd-callout bd-callout-danger">
+        <h4 id="asynchronous-methods-and-transitions">Asynchronous methods and transitions</h4>
+        <p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They return to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
+        <p><a href="/docs/5.1/getting-started/javascript/#asynchronous-functions-and-transitions">See our JavaScript documentation for more information</a>.</p>
+    </div>
+    <p>將內容啟用為可摺疊元素。接受一個選擇性的選項 <code>object</code>。</p>
+    <p>可以透過建構函式建立一個摺疊範例，舉例來說:</p>
+    <pre>
+        <code>
+            var myCollapse = document.getElementById('myCollapse')
+            var bsCollapse = new bootstrap.Collapse(myCollapse, {
+                toggle: false
+            })
+        </code>
+    </pre>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>toggle</code></td>
+                <td>將一個可折疊元素切換為顯示或隱藏。<strong>在可折疊元素實際顯示或隱藏之前返回給調用者。</strong> (即在 <code>shown.bs.collapse</code> 或
+                    <code>hidden.bs.collapse</code> 事件發生之前)。</td>
+            </tr>
+            <tr>
+                <td><code>show</code></td>
+                <td>顯示一個可折疊元素。<strong>在可折疊元素實際顯示之前返回給調用者。</strong> (例如， <code>shown.bs.collapse</code> 事件發生前). </td>
+            </tr>
+            <tr>
+                <td><code>hide</code></td>
+                <td>隱藏一個可折疊元素。<strong>在可折疊元素實際被隱藏之前返回給調用者。</strong> (例如, 在 <code>hidden.bs.collapse</code> 事件發生之前)。</td>
+            </tr>
+            <tr>
+                <td><code>dispose</code></td>
+                <td>銷毀一個元素的折疊。 (移除 DOM 元素上儲存的資料)</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>getInstance</code>
+                </td>
+                <td>
+                    允許您獲取與 DOM 元素相關的 collapse 實例的靜態方法，你可以使用像是：<code>bootstrap.Collapse.getInstance(element)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>getOrCreateInstance</code>
+                </td>
+                <td>
+                    靜態方法，允許你獲取與 DOM 元素相關的 collapse 實例，或者在未初始化的情況下創建一個新實例。
+                    你可以使用像是：<code>bootstrap.Collapse.getOrCreateInstance(element)</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>事件</h2>
+    <p>Bootstrap 提供一些事件給予折疊使用。</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>show.bs.collapse</code></td>
+                <td>當調用<code>show</code> 範例方法時，會立即觸發此事件。</td>
+            </tr>
+            <tr>
+                <td><code>shown.bs.collapse</code></td>
+                <td>當折疊元素顯示為可見時，會觸發此事件（將等待 CSS 轉換完成）。</td>
+            </tr>
+            <tr>
+                <td><code>hide.bs.collapse</code></td>
+                <td>當調用 <code>hide</code> 方式時，會立即觸發此事件。</td>
+            </tr>
+            <tr>
+                <td><code>hidden.bs.collapse</code></td>
+                <td>當折疊元素被隱藏時，會觸發此事件（將等待 CSS 轉換完成）。</td>
+            </tr>
+        </tbody>
+    </table>
+    <pre>
+        <code>
+            var myCollapsible = document.getElementById('myCollapsible')
+            myCollapsible.addEventListener('hidden.bs.collapse', function () {
+                // do something...
+            })
+        </code>
+    </pre>
+
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

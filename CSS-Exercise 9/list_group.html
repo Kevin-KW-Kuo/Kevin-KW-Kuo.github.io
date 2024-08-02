@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>列表群組 (List group)</h1>
+    <p>列表群組是一個具有彈性的元件，用於顯示一系列內容。可以修改、擴增以支援更多的內容。</p>
+
+    <h2>基礎範例</h2>
+    <p>最基本的列表群組是具有列表項目和適當 Class 的無序列表。根據以下的選項使用它，或根據您的需要調整 CSS。</p>
+    <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <h2>啟用物件</h2>
+    <p>將 <code>.active</code> 加到 <code>.list-group-item</code> 指示當前的活動狀態。</p>
+    <ul class="list-group">
+        <li class="list-group-item active" aria-current="true">An active item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <h2>禁用選項</h2>
+    <p>將 <code>.disabled</code> 加到 <code>.list-group-item</code> 使其 <em>呈現</em> 禁用。請注意，一些帶有 <code>.disabled</code> 的元素還需要自訂 JavaScript 才能完全禁用其點擊事件（例如：連結）。</p>
+    <ul class="list-group">
+        <li class="list-group-item disabled" aria-disabled="true">A disabled item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <h2>連結和按鈕</h2>
+    <p>使用 <code>&lt;a&gt;</code> 或 <code>&lt;button&gt;</code> ，並加入 <code>.list-group-item-action</code> 來創建具有 hover、禁用和啟用狀態的動態列表群組。我們分離這些偽類別，以確保由非交互元素組成的列表群組（如 <code>&lt;li&gt;</code> 或 <code>&lt;div&gt;</code> ）不提供點擊或觸擊。</p>
+    <p>確保<strong>不要在這裡使用標準的 <code>.btn</code></strong>。</p>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+            The current link item
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+        <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+        <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+        <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+    </div>
+    <br>
+    <p>對於 <code>&lt;button&gt;</code>，你也可以使用 <code>disabled</code> 屬性而不是 <code>.disabled</code> class。 不幸的是，<code>&lt;a&gt;</code> 不支援 disabled 屬性。</p>
+    <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+            The current button
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">A second item</button>
+        <button type="button" class="list-group-item list-group-item-action">A third button item</button>
+        <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
+        <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+    </div>
+
+    <h2>Flush</h2>
+    <p>加入 <code>.list-group-flush</code> 來移除部分邊框及圓角，以在父容器中 (如：卡片) 產生邊緣貼齊的列表群組。</p>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <h2>編號</h2>
+    <p>添加 <code>.list-group-numbered</code> 類別 (並可選擇使用 <code>&lt;ol&gt;</code> 元素) 以選擇加入編號列表群組。數字是通過 CSS 來生成的 (而不是 <code>&lt;ol&gt;</code> 的預設瀏覽器樣式) ，以便更好的放置在列表群組中以及自定義。</p>
+    <p>數字由 <code>&lt;ol&gt;</code> 上的 <code>counter-reset</code> 生成，然後使用 <code>::before</code> 偽元素設置樣式並放在 <code>&lt;li&gt;</code> 上，帶有 <code>counter-increment</code> 和 <code>content</code>。</p>
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item">A list item</li>
+        <li class="list-group-item">A list item</li>
+        <li class="list-group-item">A list item</li>
+    </ol>
+    <p>These work great with custom content as well.</p>
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+    </ol>
+
+    <h2>水平</h2>
+    <p>加入 <code>.list-group-horizo​​ntal</code> 可以將列表群組在所有斷點的排版從垂直更改為水平。或者選擇加入響應式變化 <code>.list-group-horizontal-{sm|md|lg|xl|xxl}</code>，使列表群組從該斷點的最小 <code>min-width</code> 開始水平放置。目前<strong>水平列表群組不能與 Flush 列表群組合併使用</strong>。</p>
+    <p><strong>進階應用:</strong> 想要一個水平、等寬的列表群組嗎？將 <code>.flex-fill</code> 加入到每個列表群組項目即可。</p>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+    </ul>
+    <ul class="list-group list-group-horizontal-sm">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+    </ul>
+    <ul class="list-group list-group-horizontal-md">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+    </ul>
+    <ul class="list-group list-group-horizontal-lg">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+    </ul>
+    <ul class="list-group list-group-horizontal-xl">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+    </ul>
+    <ul class="list-group list-group-horizontal-xxl">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+    </ul>
+
+    <h2>情境 Class</h2>
+    <p>使用情境式 Class 來設計具有狀態背景和顏色的列表項目。</p>
+    <ul class="list-group">
+        <li class="list-group-item">A simple default list group item</li>
+
+        <li class="list-group-item list-group-item-primary">A simple primary list group item</li>
+        <li class="list-group-item list-group-item-secondary">A simple secondary list group item</li>
+        <li class="list-group-item list-group-item-success">A simple success list group item</li>
+        <li class="list-group-item list-group-item-danger">A simple danger list group item</li>
+        <li class="list-group-item list-group-item-warning">A simple warning list group item</li>
+        <li class="list-group-item list-group-item-info">A simple info list group item</li>
+        <li class="list-group-item list-group-item-light">A simple light list group item</li>
+        <li class="list-group-item list-group-item-dark">A simple dark list group item</li>
+    </ul>
+    <br>
+    <p>情境式 Class 也可以使用 <code>.list-group-item-action</code>。請注意，在前面的範例中不存在 hover 樣式。另外還有支持 <code>.active</code> 狀態，應用它來指示情境列表群組項目上的啟用狀態。</p>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>
+    
+        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary list group item</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary list group item</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group item</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group item</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group item</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list group item</a>
+    </div>
+    <div>
+        <h5>Conveying meaning to assistive technologies</h5>
+        <p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
+        </p>
+    </div>
+
+    <h2>帶標籤</h2>
+    <p>透過某些 <a href="/docs/5.1/utilities/flex/">通用類別</a>，向任何列表項目添加標籤以顯示未讀計數、活動等。</p>
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            A list item
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            A second list item
+            <span class="badge bg-primary rounded-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            A third list item
+            <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+    </ul>
+
+    <h2>自定義內容</h2>
+    <p>透過 <a href="/docs/5.1/utilities/flex/">flexbox 通用類別</a>，幾乎任何的 HTML 都能加入到項目內，如以下的列表群組連結。</p>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small>And some small print.</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small class="text-muted">And some muted small print.</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small class="text-muted">And some muted small print.</small>
+        </a>
+    </div>
+
+    <h2>核取方塊和選項按鈕</h2>
+    <p>將 Bootstrap 的複選框與單選框放在列表群組中，並依據需要進行自定義。您可以在不使用 <code>&lt;label&gt;</code> 的情況下使用它們，但請記住要包含 <code>aria-label</code> 以及必要的內容。</p>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            First checkbox
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Second checkbox
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Third checkbox
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Fourth checkbox
+        </li>
+        <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+            Fifth checkbox
+        </li>
+    </ul>
+    <p>除此之外，如果您希望將 <code>&lt;label&gt;</code> 作為 <code>.list-group-item</code> 使用以創造較大的點擊區域，這麼做是可以的。</p>
+    <div class="list-group">
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            First checkbox
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Second checkbox
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Third checkbox
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Fourth checkbox
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Fifth checkbox
+        </label>
+    </div>
+
+    <h2>Sass</h2>
+    <h3>Variables</h3>
+    <pre>
+        <code>
+            $list-group-color:                  $gray-900;
+            $list-group-bg:                     $white;
+            $list-group-border-color:           rgba($black, .125);
+            $list-group-border-width:           $border-width;
+            $list-group-border-radius:          $border-radius;
+
+            $list-group-item-padding-y:         $spacer * .5;
+            $list-group-item-padding-x:         $spacer;
+            $list-group-item-bg-scale:          -80%;
+            $list-group-item-color-scale:       40%;
+
+            $list-group-hover-bg:               $gray-100;
+            $list-group-active-color:           $component-active-color;
+            $list-group-active-bg:              $component-active-bg;
+            $list-group-active-border-color:    $list-group-active-bg;
+
+            $list-group-disabled-color:         $gray-600;
+            $list-group-disabled-bg:            $list-group-bg;
+
+            $list-group-action-color:           $gray-700;
+            $list-group-action-hover-color:     $list-group-action-color;
+
+            $list-group-action-active-color:    $body-color;
+            $list-group-action-active-bg:       $gray-200;
+        </code>
+    </pre>
+
+    <h2>Mixins</h2>
+    <p>與 <code>$theme-colors</code> 結合使用來生成 <code>.list-group-item</code> 的 <a href="#contextual-classes">contextual variant classes</a>。</p>
+    <pre>
+        <code>
+            @mixin list-group-item-variant($state, $background, $color) {
+                .list-group-item-#{$state} {
+                    color: $color;
+                    background-color: $background;
+                
+                    &.list-group-item-action {
+                    &:hover,
+                    &:focus {
+                        color: $color;
+                        background-color: shade-color($background, 10%);
+                    }
+                
+                    &.active {
+                        color: $white;
+                        background-color: $color;
+                        border-color: $color;
+                    }
+                    }
+                }
+                }
+        </code>
+    </pre>
+
+    <h2>Loop</h2>
+    <pre>
+        <code>
+            // List group contextual variants
+            //
+            // Add modifier classes to change text and background color on individual items.
+            // Organizationally, this must come after the `:hover` states.
+
+            @each $state, $value in $theme-colors {
+            $list-group-variant-bg: shift-color($value, $list-group-item-bg-scale);
+            $list-group-variant-color: shift-color($value, $list-group-item-color-scale);
+            @if (contrast-ratio($list-group-variant-bg, $list-group-variant-color) < $min-contrast-ratio) {
+                $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+            }
+
+            @include list-group-item-variant($state, $list-group-variant-bg, $list-group-variant-color);
+            }
+        </code>
+    </pre>
+
+    <h2>JavaScript 行為</h2>
+    <p>使用 JavaScript 插件 - 單獨加入或通過編譯的 <code>bootstrap.js</code> 檔 - 來擴展我們的列表群組，以創建內容的切換選單。</p>
+    <pre>
+        <code>
+    &lt;div class="row"&gt;
+        &lt;div class="col-4"&gt;
+            &lt;div class="list-group" id="list-tab" role="tablist"&gt;
+                &lt;a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                    href="#list-home" role="tab" aria-controls="list-home"&gt;Home&lt;/a&gt;
+                &lt;a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                    href="#list-profile" role="tab" aria-controls="list-profile"&gt;Profile&lt;/a&gt;
+                &lt;a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
+                    href="#list-messages" role="tab" aria-controls="list-messages"&gt;Messages&lt;/a&gt;
+                &lt;a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
+                    href="#list-settings" role="tab" aria-controls="list-settings"&gt;Settings&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="col-8"&gt;
+            &lt;div class="tab-content" id="nav-tabContent"&gt;
+                &lt;div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"&gt;...
+                &lt;/div&gt;
+                &lt;div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"&gt;...&lt;/div&gt;
+                &lt;div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"&gt;...&lt;/div&gt;
+                &lt;div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"&gt;...&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+        </code>
+    </pre>
+
+    <h3>使用資料屬性</h3>
+    <p>可以指定 <code>data-bs-toggle="list"</code> 或元素來啟動列表群組的導航，而無需編寫任何 JavaScript。在 <code>.list-group-item</code> 上使用這些資料屬性。</p>
+    <pre>
+        <code>
+    &lt;div role="tabpanel"&gt;
+        &lt;!-- List group --&gt;
+        &lt;div class="list-group" id="myList" role="tablist"&gt;
+            &lt;a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#home" role="tab"&gt;Home&lt;/a&gt;
+            &lt;a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#profile" role="tab"&gt;Profile&lt;/a&gt;
+            &lt;a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#messages" role="tab"&gt;Messages&lt;/a&gt;
+            &lt;a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#settings" role="tab"&gt;Settings&lt;/a&gt;
+        &lt;/div&gt;
+    
+        &lt;!-- Tab panes --&gt;
+        &lt;div class="tab-content"&gt;
+            &lt;div class="tab-pane active" id="home" role="tabpanel"&gt;...&lt;/div&gt;
+            &lt;div class="tab-pane" id="profile" role="tabpanel"&gt;...&lt;/div&gt;
+            &lt;div class="tab-pane" id="messages" role="tabpanel"&gt;...&lt;/div&gt;
+            &lt;div class="tab-pane" id="settings" role="tabpanel"&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+        </code>
+    </pre>
+
+    <h3>透過 JavaScript</h3>
+    <p>通過 JavaScript 啟用可選的列表項目（每個列表項目需要單獨啟動）：</p>
+    <pre>
+        <code>
+            var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+                triggerTabList.forEach(function (triggerEl) {
+                var tabTrigger = new bootstrap.Tab(triggerEl)
+
+                triggerEl.addEventListener('click', function (event) {
+                    event.preventDefault()
+                    tabTrigger.show()
+                    })
+            })
+        </code>
+    </pre>
+    <br>
+    <p>您可以透過以下幾種方式啟動個別列表項目：</p>
+    <pre>
+        <code>
+            var triggerEl = document.querySelector('#myTab a[href="#profile"]')
+            bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+
+            var triggerFirstTabEl = document.querySelector('#myTab li:first-child a')
+            bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
+        </code>
+    </pre>
+
+    <h2>淡出效果</h2>
+    <p>要使頁籤面板淡入淡出，請將 .fade 添加到每個 .tab-pane 中。 第一個頁籤面板還必須具有 .show 使初始內容可見。</p>
+    <pre>
+        <code>
+    &lt;div class="tab-content"&gt;
+        &lt;div class="tab-pane fade show active" id="home" role="tabpanel"&gt;...&lt;/div&gt;
+        &lt;div class="tab-pane fade" id="profile" role="tabpanel"&gt;...&lt;/div&gt;
+        &lt;div class="tab-pane fade" id="messages" role="tabpanel"&gt;...&lt;/div&gt;
+        &lt;div class="tab-pane fade" id="settings" role="tabpanel"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+        </code>
+    </pre>
+
+    <h2>方法</h2>
+    <h3>constructor</h3>
+    <p>啟動列表項目元素和內容容器。頁籤應該有一個 <code>data-bs-target</code> 或 <code>href</code> 定位在 DOM 中的一個容器節點。</p>
+    <pre>
+        <code>
+    &lt;div class="list-group" id="myList" role="tablist"&gt;
+        &lt;a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#home" role="tab"&gt;Home&lt;/a&gt;
+        &lt;a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#profile" role="tab"&gt;Profile&lt;/a&gt;
+        &lt;a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#messages" role="tab"&gt;Messages&lt;/a&gt;
+        &lt;a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#settings" role="tab"&gt;Settings&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="tab-content"&gt;
+        &lt;div class="tab-pane active" id="home" role="tabpanel"&gt;...&lt;/div&gt;
+        &lt;div class="tab-pane" id="profile" role="tabpanel"&gt;...&lt;/div&gt;
+        &lt;div class="tab-pane" id="messages" role="tabpanel"&gt;...&lt;/div&gt;
+        &lt;div class="tab-pane" id="settings" role="tabpanel"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;script&gt;
+        var firstTabEl = document.querySelector('#myTab a:last-child')
+        var firstTab = new bootstrap.Tab(firstTabEl)
+    
+        firstTab.show()
+    &lt;/script&gt;
+        </code>
+    </pre>
+    <h3>show</h3>
+    <p>選擇給定的列表項目並顯示其關聯的 pane。而先前選擇的任何其他列表項目將被取消，並使其關聯的 pane 隱藏。<strong>在 Tab pane 顯示之前回傳給調用者</strong>（例如，在 <code>shown.bs.tab</code> 事件發生之前）。</p>
+    <pre>
+        <code>
+            var someListItemEl = document.querySelector('#someListItem')
+            var tab = new bootstrap.Tab(someListItemEl)
+        
+            tab.show()
+        </code>
+    </pre>
+    <h3>dispose</h3>
+    <p>銷毀元素的頁籤。</p>
+    <h3>getInstance</h3>
+    <p><em>靜態</em> 方法可以使您獲取與 DOM 元素相關聯的實例。</p>
+    <pre>
+        <code>
+            var triggerEl = document.querySelector('#trigger')
+            var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instance
+        </code>
+    </pre>
+    <h3>getOrCreateInstance</h3>
+    <p><em>靜態</em> 方法，允許你獲取與 DOM 元素相關的 tab 實例，或者在未初始化的情況下創建一個新實例。</p>
+    <pre>
+        <code>
+            var triggerEl = document.querySelector('#trigger')
+            var tab = bootstrap.Tab.getOrCreateInstance(triggerEl) // Returns a Bootstrap tab instance
+        </code>
+    </pre>
+
+    <h2>事件</h2>
+    <p>當顯示新分頁時，事件按以下順序觸發：</p>
+    <ol>
+        <li><code>hide.bs.tab</code> (在當前啟用的頁籤上)</li>
+        <li><code>show.bs.tab</code> (在準備啟用的頁籤上)</li>
+        <li><code>hidden.bs.tab</code> (在先前啟用的頁籤上，與 <code>hide.bs.tab</code> 事件相同)</li>
+        <li><code>shown.bs.tab</code> (在剛剛顯示的頁籤上，與 <code>show.bs.tab</code> 事件相同)</li>
+    </ol>
+    <p>如果沒有選項啟用，則 <code>hide.bs.tab</code> 和 <code>hidden.bs.tab</code> 事件將不被觸發。</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>show.bs.tab</code></td>
+                <td>這個事件因頁籤顯示而觸發，但是會在新頁籤被顯示之前結束。 使用 <code>event.target</code> 和 <code>event.relatedTarget</code>
+                    將目前與先前啟用的頁籤(如果可用) 的作為目標。</td>
+            </tr>
+            <tr>
+                <td><code>shown.bs.tab</code></td>
+                <td>這個事件在頁籤顯示後觸發。 使用 <code>event.target</code> 和 <code>event.relatedTarget</code> 來分別定位啟用中和剛剛啟用的頁籤。</td>
+            </tr>
+            <tr>
+                <td><code>hide.bs.tab</code></td>
+                <td>新的頁籤要顯示（先前的啟用頁籤將被隱藏）時，此事將觸發。 使用 <code>event.target</code> 和 <code>event.relatedTarget</code>
+                    分別定位先前啟用和即將啟用的頁籤。</td>
+            </tr>
+            <tr>
+                <td><code>hidden.bs.tab</code></td>
+                <td>新的選項顯示後（因此先前啟用的選項將隱藏），此事件將觸發。 使用 <code>event.target</code> 和 <code>event.relatedTarget</code>
+                    分別定位先前啟用的頁籤和新啟用的頁籤 。</td>
+            </tr>
+        </tbody>
+    </table>
+    <pre>
+        <code>
+            var tabElms = document.querySelectorAll('a[data-bs-toggle="list"]')
+            tabElms.forEach(function(tabElm) {
+            tabElm.addEventListener('shown.bs.tab', function (event) {
+                event.target // newly activated tab
+                event.relatedTarget // previous active tab
+            })
+            }
+        </code>
+    </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

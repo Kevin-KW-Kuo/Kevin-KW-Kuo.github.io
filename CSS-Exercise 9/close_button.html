@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Close button</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>關閉按鈕 (Close button)</h1>
+    <p>通用的關閉按鈕，用於關閉互動視窗或是警報之類的內容。</p>
+
+    <h2>範例</h2>
+    <p>提供一個選項，透過 <code>.btn-close</code> 以關閉或解除元件。預設的樣式有限，但可高度客製化。修改 Sass 變數以替換預設的 <code>background-image</code>。<strong>請確保有在 <code>aria-label</code> 替螢幕閱讀器加入文字。</strong></p>
+    <button type="button" class="btn-close" aria-label="Close"></button>
+
+    <h2>禁用狀態</h2>
+    <p>禁用關閉按鈕將會改變它的 <code>opacity</code>。我們同時應用了 <code>pointer-events: none</code> 和 <code>user-select: none</code> 以避免觸發滑入、啟用等狀態。</p>
+    <button type="button" class="btn-close" disabled aria-label="Close"></button>
+
+    <h2>白色系變化</h2>
+    <p>透過 <code>.btn-close-white</code> 類別將預設的 <code>.btn-close</code> 改為白色。此種類別使用 <code>filter</code> 屬性以反轉 <code>background-image</code>。</p>
+    <div class="bg-dark">
+        <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white" disabled="" aria-label="Close"></button>
+    </div>
+
+    <h2>Sass</h2>
+    <h3>Variables</h3>
+    <div class="highlight"><pre><code class="language-scss" data-lang="scss">
+        <span class="nv">$btn-close-width</span><span class="o">:</span>            <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+        <span class="nv">$btn-close-height</span><span class="o">:</span>           <span class="nv">$btn-close-width</span><span class="p">;</span>
+        <span class="nv">$btn-close-padding-x</span><span class="o">:</span>        <span class="mf">.25</span><span class="kt">em</span><span class="p">;</span>
+        <span class="nv">$btn-close-padding-y</span><span class="o">:</span>        <span class="nv">$btn-close-padding-x</span><span class="p">;</span>
+        <span class="nv">$btn-close-color</span><span class="o">:</span>            <span class="nv">$black</span><span class="p">;</span>
+        <span class="nv">$btn-close-bg</span><span class="o">:</span>               <span class="sx">url("data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='</span><span class="si">#{</span><span class="nv">$btn-close-color</span><span class="si">}</span><span class="sx">'&gt;&lt;path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/&gt;&lt;/svg&gt;")</span><span class="p">;</span>
+        <span class="nv">$btn-close-focus-shadow</span><span class="o">:</span>     <span class="nv">$input-btn-focus-box-shadow</span><span class="p">;</span>
+        <span class="nv">$btn-close-opacity</span><span class="o">:</span>          <span class="mf">.5</span><span class="p">;</span>
+        <span class="nv">$btn-close-hover-opacity</span><span class="o">:</span>    <span class="mf">.75</span><span class="p">;</span>
+        <span class="nv">$btn-close-focus-opacity</span><span class="o">:</span>    <span class="mi">1</span><span class="p">;</span>
+        <span class="nv">$btn-close-disabled-opacity</span><span class="o">:</span> <span class="mf">.25</span><span class="p">;</span>
+        <span class="nv">$btn-close-white-filter</span><span class="o">:</span>     <span class="nf">invert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="nf">grayscale</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">)</span> <span class="nf">brightness</span><span class="p">(</span><span class="mi">200</span><span class="kt">%</span><span class="p">);</span>
+        </code></pre>
+    </div>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

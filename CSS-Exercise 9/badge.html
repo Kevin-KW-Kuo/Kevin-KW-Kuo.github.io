@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>標籤 (Badges)</h1>
+    <p>標籤的文檔與範例，我們的小型及標籤型元件。</p>
+
+    <h2>範例</h2>
+    <p>標籤透過相對字體大小和 em 單位來縮放以符合直屬父元素的大小。在 v5 版本中的標籤連結不再擁有 focus 或 hover 樣式。</p>
+    
+    <h2>Headings</h2>
+    <h1>Example heading <span class="badge bg-secondary">New</span></h1>
+    <h2 class="h2-none-padding">Example heading <span class="badge bg-secondary">New</span></h2>
+    <h3>Example heading <span class="badge bg-secondary">New</span></h3>
+    <h4>Example heading <span class="badge bg-secondary">New</span></h4>
+    <h5>Example heading <span class="badge bg-secondary">New</span></h5>
+    <h6>Example heading <span class="badge bg-secondary">New</span></h6>
+
+    <h2>Buttons</h2>
+    <p>標籤可以作為連結或按鈕的一部分，用於計數器。</p>
+    <button type="button" class="btn btn-primary">
+        Notifications <span class="badge bg-secondary">4</span>
+    </button>
+
+    <h2>定位</h2>
+    <p>使用通用類別調整 .badge 並將它放在連結或按鈕的角落。</p>
+    <button type="button" class="btn btn-primary position-relative">
+        Inbox
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            99+
+            <span class="visually-hidden">unread messages</span>
+        </span>
+        </button>
+        <p>你也可以使用更多通用類別取代 .badge。</p>
+        <button type="button" class="btn btn-primary position-relative">
+            Profile
+            <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                <span class="visually-hidden">New alerts</span>
+            </span>
+    </button>
+    
+    <h2>背景顏色</h2>
+    <p>使用背景通用類別來快速修改標籤的外觀。請注意當使用 Bootstrap 預設的 <code>.bg-light</code> 時，你會需要一個適當的文字色彩，例如 <code>.text-dark</code>。這是因為背景通用類別只有 <code>background-color</code> 的設定。</p>
+    <span class="badge bg-primary">Primary</span>
+    <span class="badge bg-secondary">Secondary</span>
+    <span class="badge bg-success">Success</span>
+    <span class="badge bg-danger">Danger</span>
+    <span class="badge bg-warning text-dark">Warning</span>
+    <span class="badge bg-info text-dark">Info</span>
+    <span class="badge bg-light text-dark">Light</span>
+    <span class="badge bg-dark">Dark</span>
+
+    <h2>膠囊標籤</h2>
+    <p>使用 <code>.rounded-pill</code> 通用類別可以透過 <code>border-radius</code> 使標籤增加圓角。</p>
+    <span class="badge rounded-pill bg-primary">Primary</span>
+    <span class="badge rounded-pill bg-secondary">Secondary</span>
+    <span class="badge rounded-pill bg-success">Success</span>
+    <span class="badge rounded-pill bg-danger">Danger</span>
+    <span class="badge rounded-pill bg-warning text-dark">Warning</span>
+    <span class="badge rounded-pill bg-info text-dark">Info</span>
+    <span class="badge rounded-pill bg-light text-dark">Light</span>
+    <span class="badge rounded-pill bg-dark">Dark</span>
+    
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

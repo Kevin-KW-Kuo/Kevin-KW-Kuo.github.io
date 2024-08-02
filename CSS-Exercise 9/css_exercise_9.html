@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Exercise 9</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <style>
+        .nav-pills .nav-link {
+            color: #000 !important;
+            padding-left: 25px;
+        }
+        .nav-pills .nav-link:hover {
+            background-color: #b6deff !important;
+            color: #000000 !important; 
+        }
+        .nav-pills .nav-link.active {
+            background-color: #007bff !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <nav class="col-md-3 nav flex-column nav-pills">
+                <ul>
+                    <i class="fas fa-cogs"></i>
+                    <strong class="title">元件(Components)</strong>
+                    <a style="color: inherit;" class="nav-link active" data-bs-toggle="pill" href="#accordion">手風琴 (Accordion)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#alert">警報 (Alerts)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#badge">標籤 (Badges)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#breadcrumb">麵包屑 (Breadcrumb)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#button">按鈕 (Buttons)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#button_group">按鈕群組 (Button group)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#cards">卡片 (Cards)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#carousel">輪播 (Carousel)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#close_button">關閉按鈕 (Close button)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#collapse">折疊 (Collapse)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#dropdowns">下拉選單 (Dropdowns)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#list_group">列表群組 (List group)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#modal">互動視窗 (Modal)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#navbar">導覽列 (Navbar)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#navs_and_tabs">導覽與頁籤 (Navs and tabs)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#offcanvas">畫布 (Offcanvas)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#pagination">分頁 (Pagination)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#placeholders">佔位符 (Placeholders)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#popovers">彈出提示框 (Popovers)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#progress">進度條 (Progress)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#scrollspy">滾動監控 (Scrollspy)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#spinners">讀取圖示 (Spinners)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#toasts">吐司 (Toasts)</a>
+                    <a style="color: inherit;" class="nav-link" data-bs-toggle="pill" href="#tooltips">工具提示框 (Tooltips)</a>
+                </ul>
+            </nav>
+
+            <div class="col-md-9 main-content">
+                <div class="tab-content">
+                    <div id="accordion" class="tab-pane show active">
+                        <iframe title="accordion.html" src="accordion.html" ></iframe>
+                    </div>
+                    <div id="alert" class="tab-pane">
+                        <iframe title="alert.html" src="alert.html" ></iframe>
+                    </div>
+                    <div id="badge" class="tab-pane">
+                        <iframe title="badge.html" src="badge.html"></iframe>
+                    </div>
+                    <div id="breadcrumb" class="tab-pane">
+                        <iframe title="breadcrumb" src="breadcrumb.html"></iframe>
+                    </div>
+                    <div id="button" class="tab-pane">
+                        <iframe title="button" src="button.html"></iframe>
+                    </div>
+                    <div id="button_group" class="tab-pane">
+                        <iframe title="button_group" src="button_group.html"></iframe>
+                    </div>
+                    <div id="cards" class="tab-pane">
+                        <iframe title="cards" src="cards.html"></iframe>
+                    </div>
+                    <div id="carousel" class="tab-pane">
+                        <iframe title="carousel" src="carousel.html"></iframe>
+                    </div>
+                    <div id="close_button" class="tab-pane">
+                        <iframe title="close_button" src="close_button.html"></iframe>
+                    </div>
+                    <div id="collapse" class="tab-pane">
+                        <iframe title="collapse" src="collapse.html"></iframe>
+                    </div>
+                    <div id="dropdowns" class="tab-pane">
+                        <iframe title="dropdowns" src="dropdowns.html"></iframe>
+                    </div>
+                    <div id="list_group" class="tab-pane">
+                        <iframe title="list_group" src="list_group.html"></iframe>
+                    </div>
+                    <div id="modal" class="tab-pane">
+                        <iframe title="modal" src="modal.html"></iframe>
+                    </div>
+                    <div id="navbar" class="tab-pane">
+                        <iframe title="navbar" src="navbar.html"></iframe>
+                    </div>
+                    <div id="navs_and_tabs" class="tab-pane">
+                        <iframe title="navs_and_tabs" src="navs_and_tabs.html"></iframe>
+                    </div>
+                    <div id="offcanvas" class="tab-pane">
+                        <iframe title="offcanvas" src="offcanvas.html"></iframe>
+                    </div>
+                    <div id="pagination" class="tab-pane">
+                        <iframe title="pagination" src="pagination.html"></iframe>
+                    </div>
+                    <div id="placeholders" class="tab-pane">
+                        <iframe title="placeholders" src="placeholders.html"></iframe>
+                    </div>
+                    <div id="popovers" class="tab-pane">
+                        <iframe title="popovers" src="popovers.html"></iframe>
+                    </div>
+                    <div id="progress" class="tab-pane">
+                        <iframe title="progress" src="progress.html"></iframe>
+                    </div>
+                    <div id="scrollspy" class="tab-pane">
+                        <iframe title="scrollspy" src="scrollspy.html"></iframe>
+                    </div>
+                    <div id="spinners" class="tab-pane">
+                        <iframe title="spinners" src="spinners.html"></iframe>
+                    </div>
+                    <div id="toasts" class="tab-pane">
+                        <iframe title="toasts" src="toasts.html"></iframe>
+                    </div>
+                    <div id="tooltips" class="tab-pane">
+                        <iframe title="tooltips" src="tooltips.html"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <a href="../index.html">Homepage</a>
+    </div>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

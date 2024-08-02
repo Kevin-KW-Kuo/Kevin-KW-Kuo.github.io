@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinners</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>讀取圖示 (Spinners)</h1>
+    <p>使用 Bootstrap 讀取圖示以表示元件載入狀態，這些讀取圖示完全使用 HTML, CSS，而沒有使用到 JavaScript。</p>
+
+    <h2>關於</h2>
+    <p>Bootstrap “讀取圖示 (spinners)” 可用於您的專案中來顯示載入狀態。它們僅使用 HTML 和 CSS 來建構，這意味著您不需要任何 JavaScript 來創建它。但您仍需要客製 JavaScript 來切換它們的顯示狀況。它們的外觀、對齊以及尺寸都可以透過我們驚人的通用類別來自定義。</p>
+    <p>基於無障礙的目標，此處每個載入器都需要包含 <code>role="status"</code> 和巢狀的 <code>&lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;</code>.</p>
+    <div>
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+
+    <h2>Border 讀取圖示</h2>
+    <p>使用 border 讀取圖示來當作輕量的載入狀態顯示。</p>
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <h2>顏色</h2>
+    <p>The border 讀取圖示使用 <code>currentColor</code> 來當作它的 <code>border-color</code>，這代表你可以使用 <a href="/docs/5.1/utilities/colors/">文字顏色通用類別</a> 來自定義它的顏色。你可以在標準的讀取圖示上使用任何通用類別中的顏色。</p>
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div>
+        <strong>為什麼不用 <code>border-color</code> 通用類別呢?</strong> 因為每個 border 讀取圖示都至少有一邊是 <code>透明</code> 的，因此使用 <code>.border-{color}</code> 通用類別會覆蓋它。
+    </div>
+
+    <h2>漸變讀取圖示</h2>
+    <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <br>
+    <p>同上，這個讀取圖示也使用 <code>currentColor</code>，所以你可以輕易地使用 <a href="/docs/5.1/utilities/colors/">文字顏色通用類別</a> 來改變它的外觀。這邊是藍色，以及它所支援的顏色變化。</p>
+    <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <h2>對齊</h2>
+    <p>在 Bootstrap 中的讀取圖示是用 <code>rem</code>, <code>currentColor</code> 和 <code>display: inline-flex</code>。這意味著它們可以輕易地調整大小、顏色以及快速對齊。</p>
+
+    <h2>Margin</h2>
+    <p>使用 <a href="/docs/5.1/utilities/spacing/">margin utilities</a> 像是 <code>.m-5</code> 簡單地增加間隔。</p>
+    <div class="spinner-border m-5" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <h2>位置</h2>
+    <p>使用 <a href="/docs/5.1/utilities/flex/">flexbox 通用類別</a>、<a href="/docs/5.1/utilities/float/">float 通用類別</a>，或是 <a href="/docs/5.1/utilities/text/">文字排版</a> 在任何情況下都可以將讀取圖示精確地放置在您需要的位置上。</p>
+    <br><br>
+    <h3>Flex</h3>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+    </div>
+    <br><br>
+    <h3>Floats</h3>
+    <div class="clearfix">
+        <div class="spinner-border float-end" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <br><br>
+    <h3>Text align</h3>
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <h2>尺寸</h2>
+    <p>增加 <code>.spinner-border-sm</code> 和 <code>.spinner-grow-sm</code> 製作一個較小的讀取圖示，讓它可以在其他元件中快速地被使用。</p>
+    <div class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow spinner-grow-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <br>
+    <br>
+    <p>或者，使用自定義 CSS 或 inline 來根據需要更改尺寸。</p>
+    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <h2>按鈕</h2>
+    <p>在按鈕內使用讀取圖示是表示當前正在處理或正在進行操作。您也可以依照需求使用 button text 來更換讀取圖示的文字。</p>
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="visually-hidden">Loading...</span>
+    </button>
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        <span class="visually-hidden">Loading...</span>
+    </button>
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+

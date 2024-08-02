@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>互動視窗 (Modal)</h1>
+    <p>使用 Bootstrap JavaScript 的互動視窗插件來增加一個對話視窗，用於用戶提示、燈箱或完整的自訂內容。</p>
+
+    <h2>如何運作</h2>
+    <p>在開始使用 Bootstrap 互動視窗之前，請務必閱讀以下內容，因為選單項目在近期內有修改。</p>
+    <ul>
+        <li>互動視窗是用 HTML、CSS 和 JavaScript 構建的。 它們位於文件中任何其他內容之上，並從 <code>&lt;body&gt;</code> 中刪除滾動，以便互動視窗的內容滾動。</li>
+        <li>點擊互動視窗 “backdrop” 將自動關閉互動視窗。</li>
+        <li>Bootstrap 一次只支援一個互動視窗。不支援巢狀互動視窗，因為我們認為巢狀互動視窗用戶體驗不佳。</li>
+        <li>互動視窗使用 <code>position: fixed</code> ，在渲染呈現上會有點特別。盡可能將您的互動視窗 HTML 放置在頂級位置，以避免其他元素的潛在干擾。在另一個固定元素中內加入一個
+            <code>.modal</code> 的時候，你可能會遇到問題。</li>
+        <li>由於 position: fixed，在移動設備上使用互動視窗有一些附加說明。有關詳細資訊，請參閱 <a
+                href="/docs/5.1/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile">我們的瀏覽器支援</a>。</li>
+        <li>依據 HTML5 定義語義的方式，<a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus">autofocus HTML
+                屬性</a> 對 Bootstrap 互動視窗沒有影響。 要達到同樣的效果，請使用一些自訂 JavaScript：</li>
+    </ul>
+    <pre>
+        <code>
+            var myModal = document.getElementById('myModal')
+            var myInput = document.getElementById('myInput')
+
+            myModal.addEventListener('shown.bs.modal', function () {
+                myInput.focus()
+            })
+        </code>
+    </pre>
+    <p>繼續閱讀 demos 和使用指南。</p>
+    <h2>範例</h2>
+    <br>
+    <h3>動態視窗元件</h3>
+    <p>下面是一個 <em>靜態</em> 動態視窗範例（意思是它的 <code>position</code> 和 <code>display</code> 已被覆寫）。
+        包括動態視窗標題、動態視窗主體（<code>padding</code> 必要）和動態視窗頁腳（可選）。盡可能地包含動態視窗標題與移除按鈕，或提供另一個明確的移除操作。</p>
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3>完整範例</h3>
+    <p>通過點擊下面的按鈕切換動態視窗呈現。它將從頁面頂部向下滑動並淡入。</p>
+    <!-- Button trigger modal -->
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3>靜態背景</h3>
+    <p>當將背景設置為靜態時，互動視窗不會因為點擊背景而關閉。</p>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Launch static backdrop modal
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3>滾動長內容</h3>
+    <p>當使用者的動態視窗變得太長時，它們的滾動獨立於於頁面本身。透過下方範例了解:</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+        Launch demo modal
+    </button>
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="min-height: 1500px">
+                    <p>This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the
+                        text the modal, we use an inline style set a minimum height, thereby extending the length of the
+                        overall modal and demonstrating the overflow scrolling. When content becomes longer than the height
+                        of the viewport, scrolling will move the modal as needed.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p>除此之外您也可以透過在 <code>.modal-dialog</code> 中加入 <code>.modal-dialog-scrollable</code> 來創建一個 body 可滾動互動視窗。</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
+        Launch demo modal
+    </button>
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableTitle"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line
+                        breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling.
+                        When content becomes longer than the predefined max-height of modal, content will be cropped and
+                        scrollable within the modal.</p>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <p>This content should appear at the bottom after you scroll.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <h3>垂直置中</h3>
+    <p>加入 <code>.modal-dialog-centered</code> 到 <code>.modal-dialog</code> 來使互動視窗垂直置中。</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+        Vertically centered modal
+    </button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+        Vertically centered scrollable modal
+    </button>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a vertically centered modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1"
+        aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This is some placeholder content to show a vertically centered modal. We've added some extra copy
+                        here to show how vertically centering the modal works when combined with scrollable modals. We also
+                        use some repeated line breaks to quickly extend the height of the content, thereby triggering the
+                        scrolling. When content becomes longer than the predefined max-height of modal, content will be
+                        cropped and scrollable within the modal.</p>
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p>Just like that.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <h3>工具提示和彈出提示框</h3>
+    <p><a href="/docs/5.1/components/tooltips/">Tooltips</a> 和 <a href="/docs/5.1/components/popovers/">popovers</a> 可以根據需要放置在動態視窗。 當動態視窗關閉時，其中的任何工具提示和插件也將自動關閉。</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalPopovers">
+        Launch demo modal
+    </button>
+    <div class="modal fade" id="exampleModalPopovers" tabindex="-1" aria-labelledby="exampleModalPopoversLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalPopoversLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>Popover in a modal</h5>
+                    <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title=""
+                            data-bs-content="Popover body content is set in this attribute."
+                            data-bs-container="#exampleModalPopovers" data-bs-original-title="Popover title">button</a> triggers
+                        a popover on click.</p>
+                    <hr>
+                    <h5>Tooltips in a modal</h5>
+                    <p><a href="#" class="tooltip-test" title="" data-bs-container="#exampleModalPopovers"
+                            data-bs-original-title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title=""
+                            data-bs-container="#exampleModalPopovers" data-bs-original-title="Tooltip">that link</a> have
+                        tooltips on hover.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <h3>使用網格</h3>
+    <p>透過在 <code>.modal-body</code> 中加入 <code>.container-fluid</code> 在互動視窗中使用 Bootstrap 網格系統。然後像其他任何地方一樣使用正常的網格系統 class。</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gridSystemModal">
+        Launch demo modal
+    </button>
+    <div class="modal fade" id="gridSystemModal" tabindex="-1" aria-labelledby="gridModalLabel" style="display: none;"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gridModalLabel">Grids in modals</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid bd-example-row">
+                        <div class="row">
+                            <div class="col-md-4">.col-md-4</div>
+                            <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
+                            <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                Level 1: .col-sm-9
+                                <div class="row">
+                                    <div class="col-8 col-sm-6">
+                                        Level 2: .col-8 .col-sm-6
+                                    </div>
+                                    <div class="col-4 col-sm-6">
+                                        Level 2: .col-4 .col-sm-6
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h3>不同的互動視窗內容</h3>
+    <p>有數個按鈕要用來觸發相同互動視窗，但會導入不同內容？ 使用 <code>event.relatedTarget</code> 和 <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">HTML data-bs-* 屬性</a> 依據點擊按鈕來更改動態視窗的內容。</p>
+    <p>下面是 HTML 和 JavaScript 的範例。 有關 <code>relatedTarget</code> 的詳細資訊，請參閱 <a href="#events">互動視窗的事件</a>。</p>
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo">Open modal for @mdo</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@fat">Open modal for @fat</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+    
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message to @mdo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var exampleModal = document.getElementById('exampleModal')
+            exampleModal.addEventListener('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            var button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            var recipient = button.getAttribute('data-bs-whatever')
+            // If necessary, you could initiate an AJAX request here
+            // and then do the updating in a callback.
+            //
+            // Update the modal's content.
+            var modalTitle = exampleModal.querySelector('.modal-title')
+            var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+            modalTitle.textContent = 'New message to ' + recipient
+            modalBodyInput.value = recipient
+            })
+        </script>
+    </div>
+    <br><br>
+    <h3>在互動視窗間切換</h3>
+    <p>通過設定 <code>data-bs-target</code> 和 <code>data-bs-toggle</code> 屬性在多個互動視窗中切換。例如，你可以從已經打開的登錄視窗中切換為重新設定密碼的視窗。<strong>請注意不能同時打開多個互動視窗</strong>—這種方法只是在兩個單獨的互動視窗之間切換。</p>
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Show a second modal and hide this one with the button below.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second
+                        modal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Hide this modal and show the first with the button below.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to
+                        first</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
+    <br><br>
+    <h3>Change animation</h3>
+    <p><code>$modal-fade-transform</code> 變數在互動視窗執行淡入動畫前會先確定 <code>.modal-dialog</code> 的轉換狀態，當互動視窗的淡入動畫結束時， <code>$modal-show-transform</code> 變數會決定淡入動畫結束時 <code>.modal-dialog</code> 的轉換。</p>
+    <p>如果您想要一個放大的動畫，您可以設定 <code>$modal-fade-transform: scale(.8)</code>。</p>
+    <br><br>
+    <h3>移除動畫</h3>
+    <p>對於只要出現而不需要淡入淡出的互動視窗，你只需要在互動視窗中刪除 <code>.fade</code>。</p>
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalNoFade">
+            Launch demo modal
+        </button>
+        <!-- Modal -->
+        <div class="modal" id="exampleModalNoFade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h3>動態高度</h3>
+    <p>如果互動視窗的高度在打開時發生變化，則應呼叫 <code>myModal.handleUpdate()</code> 以重新調整互動視窗的位置，以防滾動條出現。</p>
+    <br><br>
+    <h3>親和性</h3>
+    <p>請務必在 <code>.modal</code> 上添加 <code>aria-labelledby="..."</code> 來引用互動視窗標題。 另外，你也可以在 <code>.modal</code> 上使用 <code>aria-describedby</code> 來描述你的動態視窗。
+        請注意你不需要加上 <code>role="dialog"</code>，因為 bootstrap 的 JavaScript 已經有添加了。</p>
+    <br><br>
+    <h3>嵌入 YouTube 影片</h3>
+    <p>在互動視窗上嵌入 YouTube 影片需要額外的 JavaScript 以自動停止重播或其他更多功能。有關詳細資訊，<a href="https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">請參閱 Stack Overflow 的文章</a>。</p>
+
+    <h2>大小選項</h2>
+    <p>互動視窗有三個可選的大小，透過 <code>.modal-dialog</code> 上的 modifier Class 啟用。 這些尺寸會在某些中斷點調整，以避免在較窄的 viewport 上出現水平捲軸。</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Size</th>
+                <th>Class</th>
+                <th>Modal max-width</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Small</td>
+                <td><code>.modal-sm</code></td>
+                <td><code>300px</code></td>
+            </tr>
+            <tr>
+                <td>Default</td>
+                <td class="text-muted">None</td>
+                <td><code>500px</code></td>
+            </tr>
+            <tr>
+                <td>Large</td>
+                <td><code>.modal-lg</code></td>
+                <td><code>800px</code></td>
+            </tr>
+            <tr>
+                <td>Extra large</td>
+                <td><code>.modal-xl</code></td>
+                <td><code>1140px</code></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>預設的互動視窗沒有 “medium” 這個類別的大小。</p>
+    <div class="bd-example">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalXl">Extra large modal</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Large modal</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalSm">Small modal</button>
+    </div>
+    <div class="modal fade" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" style="display: none;"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalXlLabel">Extra large modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalLg" tabindex="-1" aria-labelledby="exampleModalLgLabel" style="display: none;"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalLgLabel">Large modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalSm" tabindex="-1" aria-labelledby="exampleModalSmLabel" style="display: none;"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalSmLabel">Small modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>滿版互動視窗</h3>
+    <p>另一個的覆蓋選項是跳出一個完全覆蓋用戶螢幕的互動視窗，可透過在 <code>.modal-dialog</code> 上放置修飾類別來啟用。</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.modal-fullscreen</code></td>
+                <td>Always</td>
+            </tr>
+            <tr>
+                <td><code>.modal-fullscreen-sm-down</code></td>
+                <td>Below <code>576px</code></td>
+            </tr>
+            <tr>
+                <td><code>.modal-fullscreen-md-down</code></td>
+                <td>Below <code>768px</code></td>
+            </tr>
+            <tr>
+                <td><code>.modal-fullscreen-lg-down</code></td>
+                <td>Below <code>992px</code></td>
+            </tr>
+            <tr>
+                <td><code>.modal-fullscreen-xl-down</code></td>
+                <td>Below <code>1200px</code></td>
+            </tr>
+            <tr>
+                <td><code>.modal-fullscreen-xxl-down</code></td>
+                <td>Below <code>1400px</code></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">Full screen</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenSm">Full screen below sm</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenMd">Full screen below md</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenLg">Full screen below lg</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenXl">Full screen below xl</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenXxl">Full screen below xxl</button>
+    </div>
+    <div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Full screen modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalFullscreenSm" tabindex="-1" aria-labelledby="exampleModalFullscreenSmLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalFullscreenSmLabel">Full screen below sm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalFullscreenMd" tabindex="-1" aria-labelledby="exampleModalFullscreenMdLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalFullscreenMdLabel">Full screen below md</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalFullscreenLg" tabindex="-1" aria-labelledby="exampleModalFullscreenLgLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-lg-down modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalFullscreenLgLabel">Full screen below lg</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalFullscreenXl" tabindex="-1" aria-labelledby="exampleModalFullscreenXlLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-xl-down modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalFullscreenXlLabel">Full screen below xl</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalFullscreenXxl" tabindex="-1" aria-labelledby="exampleModalFullscreenXxlLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-xxl-down modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="exampleModalFullscreenXxlLabel">Full screen below xxl</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

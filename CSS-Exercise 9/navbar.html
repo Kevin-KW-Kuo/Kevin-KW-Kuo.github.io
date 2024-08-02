@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>導覽列 (Navbar)</h1>
+    <p>Bootstrap 強大的響應式導覽列之文件和範例。包括品牌，導覽等，以及針對折疊插件的支援。</p>
+
+    <h2>如何運作</h2>
+    <ul>
+        <li>導覽列需要使用 <code>.navbar</code> 包裝，並透過 <code>.navbar-expand{-sm|-md|-lg|-xl}</code> 給予響應式的折疊以及使用 <a href="#color-schemes">color scheme</a> class。</li>
+        <li>導覽列預設的內容寬度是浮動的，更改 <a href="#containers">containers</a> 以不同的方式來限制水平寬度。</li>
+        <li>使用 <a href="/docs/5.1/utilities/spacing/">spacing</a> 及 <a href="/docs/5.1/utilities/flex/">flex</a> 通用類別來控制物件在導覽列的間隔及對齊。</li>
+        <li>導覽列預設是響應式的，但也可以輕易的修改這個選項。響應式行為會使用到折疊的 JavaScript 插件。</li>
+        <li>使用 <code>&lt;nav&gt;</code> 元素確保親和性，或者如果使用更通用的元素，如 <code>&lt;div&gt;</code>，在每一個導覽列中添加 <code>role="navigation"</code> 為輔助技術的使用者明確標識導覽區域。</li>
+        <li>透過設置 <code>aria-current="page"</code> 於當前頁面，或將 <code>aria-current="true"</code> 設置於群組中的當前項目來指示目前位置。</li>
+    </ul>
+    <div>
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+
+    <h2>支援內容</h2>
+    <p>導覽列內建對一些對子元件的支援。根據需求可從以下選項中進行選擇：</p>
+    <ul>
+        <li><code>.navbar-brand</code> 用於您的公司，產品或專案名稱。</li>
+        <li><code>.navbar-nav</code> 提供高度完整和輕便的導航（包括對下拉清單的支持）。</li>
+        <li><code>.navbar-toggler</code> 用於我們的折疊插件和其他 <a href="#responsive-behaviors">navigation toggling</a> 行為。</li>
+        <li>Flex and spacing utilities for any form controls and actions.</li>
+        <li><code>.navbar-text</code> 用於垂直居中的文本字串。</li>
+        <li><code>.collapse.navbar-collapse</code> 用於外層中斷點群組和隱藏導覽列內容。</li>
+        <li>Add an optional <code>.navbar-scroll</code> to set a <code>max-height</code> and <a href="#scrolling">scroll expanded navbar content</a>.</li>
+    </ul>
+    <br><br>
+    <p>以下是一個包含子元件的範例，包括在一個自動在 lg（大）中斷點處摺疊的響應式導覽列。</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <p>本範例使用 <a href="/docs/5.1/utilities/background/">background</a> (<code>bg-light</code>) 和 <a href="/docs/5.1/utilities/spacing/">spacing</a> (<code>my-2</code>, <code>my-lg-0</code>, <code>me-sm-0</code>, <code>my-sm-0</code>) 通用類別。</p>
+
+    <h2>品牌</h2>
+    <p><code>.navbar-brand</code> 可以應用於大多數元素，但對錨點最有效，因為某些元素可能需要通用類別 Class 或自訂樣式。</p>
+
+    <h2>Text</h2>
+    <p>使用 <code>.navbar-brand</code> 類別在元素中添加文字。</p>
+    <!-- As a link -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+        </div>
+    </nav>
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Navbar</span>
+        </div>
+    </nav>
+
+    <h2>Image</h2>
+    <p>你可以將 <code>.navbar-brand</code> 中的文字替換為 <code>&lt;img&gt;</code>。</p>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../image/cat.jpg" alt="cat.jpg" width="30" height="24">
+            </a>
+        </div>
+    </nav>
+
+    <h2>導覽</h2>
+    <p>導覽的連結建立在我們的 <code>.nav</code> 選項上、使用專屬的修飾符 Class ，並且需要使用 <a href="#toggler">toggler classes</a> 以建立適當的響應樣式。<strong>在導覽列中的導覽元件會盡可能的佔用水平空間</strong>，以保持您的導覽列內容安全對齊。</p>
+    <p>在 <code>.nav-link</code> 上添加 <code>.active</code> 類以指示當前頁面。</p>
+    <p>請注意，你也應該在 <code>.nav-link</code> 上添加 <code>aria-current</code> 屬性。</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <p>因為我們的導覽有專屬的類別，依照需求你可以避免完全使用列表的方法。</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link disabled">Disabled</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <p>您還可以在導覽列的導覽元件使用下拉式選單。下拉式選單需要一個包裝元素進行定位，請確保為 <code>.nav-item</code> 和 <code>.nav-link</code> 使用單獨及巢狀的元素，如下所示。</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h2>表單</h2>
+    <p>將各種表單和元件放在導覽列中：</p>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <br><br>
+    <p><code>.navbar</code> 中的直接子元素使用 flex 排版，預設為 <code>justify-content: space-between</code>。 根據需要使用其他 <a href="/docs/5.1/utilities/flex/">flex utilities</a> 來調整此行為。</p>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Navbar</a>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <br><br>
+    <p>input 群組也可以這樣使用。如果導覽列整個都是表單，或者大部分是表單，則可以使用 <form> 元素作為容器並保存 HTML。</p>
+    <nav class="navbar navbar-light bg-light">
+        <form class="container-fluid">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+        </form>
+    </nav>
+    <br><br>
+    <p>表單導覽列也支援各種按鈕。這也大大的提醒了我們可以使用垂直對齊工具來對齊不同大小的元素。</p>
+    <nav class="navbar navbar-light bg-light">
+        <form class="container-fluid justify-content-start">
+            <button class="btn btn-outline-success me-2" type="button">Main button</button>
+            <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
+        </form>
+    </nav>
+    <h2>文字</h2>
+    <p>透過 <code>.navbar-text</code> 導覽列可以包含一些文本。 該 class 調整了文本字串的垂直對齊和水平間距。</p>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-text">
+                Navbar text with an inline element
+            </span>
+        </div>
+    </nav>
+    <p>根據需要與其他元件和通用類別混合使用。</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Navbar text with an inline element
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <h2>顏色方案</h2>
+    <p>由於主題 class 和 <code>background-color</code> 通用類別 class 的結合，主題化導覽列從未如此簡單。 從 <code>.navbar-light</code> 選用淺色背景顏色，或者 <code>.navbar-dark</code> 用於深色背景顏色。 然後，使用 <code>.bg-*</code> 通用類別自訂。</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h2>容器</h2>
+    <p>雖然不是必需的，但您可以把導覽列包裝在 <code>.container</code> 中，將其置中於頁面 - 請注意，內部的 container 還是必要的。或是你可以在 <code>.navbar</code> 中包裝一個 container，只將 <a href="#placement">fixed or static top navbar</a> 的內容置中。</p>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+            </div>
+        </nav>
+    </div>
+    <br><br>
+    <p>使用任意響應式容器以更改導覽列中內容的顯示寬度。</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-md">
+            <a class="navbar-brand" href="#">Navbar</a>
+        </div>
+    </nav>
+
+    <h2>定位</h2>
+    <p>使用我們的 <a href="/docs/5.1/utilities/position/">定位通用類別</a> 將導覽列放置在非靜態位置。選擇固定到頂部、固定到底部、或粘貼到頂部（會隨著頁面滾動，直到物件達到頂部，並停留在原處）。固定的導覽列使用 <code>position：fixed</code>，這意味著它們會脫離正常的 DOM 的文件流，並且可能需要自定義 CSS（例如 <code>&lt;body&gt;</code> 上的 <code>padding-top</code>），以防止與其他元素重疊。</p>
+    <p>還要注意 <code>.sticky-top</code> 使用 <code>position：sticky</code>，<strong><a href="https://caniuse.com/css-sticky">並沒有被所有瀏覽器支持</a></strong>。</p>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Default</a>
+        </div>
+    </nav>
+    <br>
+    <pre>
+        <code>
+    &lt;nav class="navbar fixed-top navbar-light bg-light"&gt;
+        &lt;div class="container-fluid"&gt;
+            &lt;a class="navbar-brand" href="#"&gt;Fixed top&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;nav class="navbar fixed-bottom navbar-light bg-light"&gt;
+        &lt;div class="container-fluid"&gt;
+            &lt;a class="navbar-brand" href="#"&gt;Fixed bottom&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+        </code>
+    </pre>
+    <br>
+    <nav class="navbar sticky-top navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sticky top</a>
+        </div>
+    </nav>
+    
+    <h2>滾動</h2>
+    <p>將 <code>.navbar-nav-scroll</code> 添加到 <code>.navbar-nav</code> (或其他導覽列子元件) 以在折疊的導覽列可切換內容中啟用垂直滾動。預設情況下，滾動開始於 <code>75vh</code> (或是視窗高度的 75%)，但你可以使用本地 CSS 自定義屬性 <code>--bs-navbar-height</code> 或是自定義樣式覆蓋它。在導覽列展開時，在較大的視窗中，內容將像在預設導覽列中一樣顯示。</p>
+    <p>請注意，這種行為有 <code>overflow</code> 的潛在缺點—當設定 <code>overflow-y: auto</code> (需要在此處滾動內容) 時，<code>overflow-x</code> 相當於設定 <code>auto</code>，將會裁切掉一些水平內容。</p>
+    <p>這是一個使用 <code>.navbar-nav-scroll</code> 和 <code>style="--bs-scroll-height: 100px;"</code> 的導覽列範例，還有一些額外的 margin 通用類別以獲得最佳間距。</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar scroll</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Link
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Link</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h2>Responsive behaviors</h2>
+    <p>導覽列可以使用 <code>.navbar-toggler</code>, <code>.navbar-collapse</code> 和 <code>.navbar-expand{-sm|-md|-lg|-xl}</code> 決定它們的內容何時會摺疊。結合其他通用類別，您可以選擇何時顯示或隱藏特定元素。</p>
+    <p>對於不需要折疊的導覽列，在導覽列中加入 <code>.navbar-expand</code>。對於總是折疊的導覽列，不要加任何 <code>.navbar-expand</code> class。</p>
+    <br><br>
+    <h3>切換元素</h3>
+    <p>導覽列的切換元素 (toggler) 預設情況下會對齊左邊，但如果它們位於同層級的 <code>.navbar-brand</code> 後面，它們將自動和最右邊對齊。反轉您的標記將對調切換元素的位置。以下是不同切換元素樣式的範例。</p>
+    <p>在最小中斷點沒有 <code>.navbar-brand</code>：</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Hidden brand</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <p>左側有一個品牌名稱，右邊是切換元素:</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <p>左側有一個切換元素，右邊是品牌名稱:</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Navbar</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h2>外部內容</h2>
+    <p>有時會需要使用折疊插件來觸發位於 <code>.navbar</code> 外的容器內容。因為插件是透過匹配 <code>id</code> 和 <code>data-bs-target</code> 來執行的，這將很容易完成！</p>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4">Collapsed content</h5>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <p>當您執行此操作時，建議您添加其他 JavaScript，以在打開容器時以程式碼控制的方式將焦點移至容器上。否則，電腦使用者與無障礙使用者可能會很難找到新顯示的內容 - 尤其是如果打開的容器位於文檔結構中的切換元素<em>之前</em>。我們也建議確保切換器具有 <code>aria-controls</code> 屬性，指向內容容器的 <code>id</code>。從理論上講，這將會允許無障礙使用者直接從切換元素跳轉到其控制的容器，但是對此功能的支援性目前還很少。</p>
+
+    <h2>Offcanvas</h2>
+    <p>使用 offcanvas 將你的擴展和折疊導覽列轉換為 offcanvas。我們擴展了 offcanvas 預設樣式並使用我們的 <code>.navbar-expand-*</code> 類別來創建動態及有彈性的導覽側邊欄。</p>
+    <p>在下面的範例中，要創建始終在所有斷點上折疊的 offcanvas 導覽列，請完全省略 <code>.navbar-expand-*</code> 類別。</p>
+    <pre>
+            <code>
+        &lt;nav class="navbar navbar-light bg-light fixed-top"&gt;
+          &lt;div class="container-fluid"&gt;
+            &lt;a class="navbar-brand" href="#"&gt;Offcanvas navbar&lt;/a&gt;
+            &lt;button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"&gt;
+              &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"&gt;
+              &lt;div class="offcanvas-header"&gt;
+                &lt;h5 class="offcanvas-title" id="offcanvasNavbarLabel"&gt;Offcanvas&lt;/h5&gt;
+                &lt;button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"&gt;&lt;/button&gt;
+              &lt;/div&gt;
+              &lt;div class="offcanvas-body"&gt;
+                &lt;ul class="navbar-nav justify-content-end flex-grow-1 pe-3"&gt;
+                  &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link active" aria-current="page" href="#"&gt;Home&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;li class="nav-item dropdown"&gt;
+                    &lt;a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+                      Dropdown
+                    &lt;/a&gt;
+                    &lt;ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown"&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;hr class="dropdown-divider"&gt;
+                      &lt;/li&gt;
+                      &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;form class="d-flex"&gt;
+                  &lt;input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"&gt;
+                  &lt;button class="btn btn-outline-success" type="submit"&gt;Search&lt;/button&gt;
+                &lt;/form&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/nav&gt;
+            </code>
+        </pre>
+
+
+
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

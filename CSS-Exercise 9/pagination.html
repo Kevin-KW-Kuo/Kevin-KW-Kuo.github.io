@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>分頁 (Pagination)</h1>
+    <p>用於指向一系列跨頁面相關內容的分頁之文件和範例。</p>
+
+    <h2>概觀</h2>
+    <p>我們在分頁中使用大量的連結，使它們不易遺漏、能輕鬆擴展，同時提供更大的點擊區域。分頁是使用 HTML 中的列表元素，因此螢幕閱讀器可以讀取可用的連結數量。在外層使用 <code>&lt;nav&gt;</code> 元素讓螢幕閱讀器和其他輔助技術用來識別為導航區塊。</p>
+    <p>此外，網頁中可能會有更多這樣的導航區塊，因此 <code>&lt;nav&gt;</code> 最好提供具描述性的 <code>aria-label</code> 來表示它的目的性。舉例來說，如果分頁元件被用來搜尋結果區塊，則適當的標籤為 <code>aria-label="Search results pages"</code>.</p>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+
+    <h2>使用 icons</h2>
+    <p>想要在分頁使用 icon 或是符號來取代文字？請確保 <code>aria</code> 的描述可提供給螢幕閱讀器讀取。</p>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <h2>禁用和啟用狀態</h2>
+    <p>分頁可針對不同的情況進行客製。使用 <code>.disabled</code> 來顯示禁用狀態、 <code>.active</code> 顯示當前頁數。</p>
+    <p>雖然 <code>.disabled</code> 這個 class 使用了 <code>pointer-events: none</code> 來 <em>嘗試</em> 禁用 a 連結功能，這個屬性在 CSS 還是未標準化的，因為鍵盤導覽仍不受影響。因此，您應該在禁用的連結增加 <code>tabindex="-1"</code> ，並使用自定義的 JavaScript 來完全的禁用它。</p>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <p>您可以選擇將 active 或 disabled 的錨點改為 <code>&lt;span&gt;</code>，或是在上一個/下一個箭頭的情況下，省略連結以刪除點擊功能，在保留預期樣式的同時防止鍵盤 focus。</p>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">2</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h2>尺寸</h2>
+    <p>喜歡更大或更小的分頁？ 加上 <code>.pagination-lg</code> or <code>.pagination-sm</code> 套用其他尺寸。</p>
+    <nav aria-label="...">
+        <ul class="pagination pagination-lg">
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">1</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+    </nav>
+
+    <h2>對齊</h2>
+    <p>使用 <a href="/docs/5.1/utilities/flex/">flexbox 通用類別</a> 更改分頁的對齊方式。</p>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+

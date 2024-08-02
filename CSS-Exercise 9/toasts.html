@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toasts</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>吐司 (Toasts)</h1>
+    <p>透過吐司向使用者推播通知，它是一種輕量且易於客製化的警報消息</p>
+    <p>吐司是輕量級通知，目的在於模仿行動版和桌面版作業系統的推播通知。它們是用 flexbox 構建的，因此很容易對齊和定位。</p>
+
+    <h2>概觀</h2>
+    <p>使用吐司元件時應瞭解的事情如下：</p>
+    <ul>
+        <li>出於效能原因吐司是選擇性加入的，所以<strong>您必須自己將它們初始化</strong>。</li>
+        <li>如果你沒有指定 <code>autohide: false</code>，吐司會自動隱藏。</li>
+    </ul>
+    <div>
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+
+    <h2>範例</h2>
+    <br>
+    <h3>基礎</h3>
+    <p>為了支援可擴充性和可預測性的吐司，我們建議加入標題和正文。 基於我們的 <code>margin</code> 和 <code>flexbox</code> 通用類別，吐司的標題使用 <code>display:flex</code> 輕鬆就能對齊內容。</p>
+    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#007aff"></rect>
+            </svg>
+    
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+    <div>
+        以前，我們的腳本動態添加了 <code>.hide</code> 類別來完全隱藏 toast (使用 <code>display:none</code>，而不僅使用 <code>opacity:0</code>)。這現在不需要了。然而，為了向後兼容，我們的腳本將繼續切換類別 (即使沒有實際需要) 直到下一個主要版本。
+    </div>
+    <br><br>
+    <h3>Live example</h3>
+    <p>點擊下面的按鈕來顯示預設情況下隱藏的 toast (位於右下角)。</p>
+    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#007aff"></rect>
+                </svg>
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+    <p>我們使用以下 JavaScript 來觸發我們的動態 toast 範例：</p>
+    <pre>
+        <code>
+            var toastTrigger = document.getElementById('liveToastBtn')
+            var toastLiveExample = document.getElementById('liveToast')
+            if (toastTrigger) {
+            toastTrigger.addEventListener('click', function () {
+                    var toast = new bootstrap.Toast(toastLiveExample)
+
+                    toast.show()
+                })
+            }
+        </code>
+    </pre>
+    <br><br>
+    <h3>半透明</h3>
+    <p>Toast 略呈半透明狀，可以與背景融為一體。</p>
+    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#007aff"></rect>
+            </svg>
+    
+            <strong class="me-auto">Bootstrap</strong>
+            <small class="text-muted">11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+    <br><br>
+    <h3>堆疊</h3>
+    <p>可以透過將吐司包裝於 <code>toast container</code> 來推疊它們，這將會在垂直方向上增加一些間距。</p>
+    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#007aff"></rect>
+            </svg>
+
+            <strong class="me-auto">Bootstrap</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#007aff"></rect>
+            </svg>
+
+            <strong class="me-auto">Bootstrap</strong>
+            <small class="text-muted">2 seconds ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Heads up, toasts will stack automatically
+        </div>
+    </div>
+    <br><br>
+    <h3>自定義內容</h3>
+    <p>通過移除子元件、調整<a href="/docs/5.1/utilities/api/">通用類別</a>或是增加標記以自定義 toast。以下我們透過移除預設的 <code>.toast-header</code>，從 <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> 添加一個自定義的隱藏 icon，並使用一些 <a href="/docs/5.1/utilities/flex/">flexbox 通用類別</a> 調整排版。</p>
+    <div class="toast align-items-center fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <br>
+    <p>另外，您也可以在吐司添加額外的控制項與元件。</p>
+    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+            <div class="mt-2 pt-2 border-top">
+                <button type="button" class="btn btn-primary btn-sm">Take action</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h3>配色方案</h3>
+    <p>基於以上的範例，您也可以透過我們的 <a href="/docs/5.1/utilities/colors/">顏色</a> 和 <a href="/docs/5.1/utilities/background/">背景</a> 通用類別。以下我們將 <code>.bg-primary</code> 和 <code>.text-white</code> 添加到 <code>.toast</code>，再把 <code>.btn-close-white</code> 添加到關閉按鈕上。為了讓邊緣清晰顯示，我們透過 <code>.border-0</code> 移除了預設的邊框。</p>
+    <div class="toast align-items-center text-white bg-primary border-0 fade show" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+
+    <h2>位置</h2>
+    <p>根據需求，使用自定義的 CSS 指定吐司位置。右上角通常用於通知，頂部的中間也是如此。如果您一次只要展示一個吐司，請將定位樣式放在 <code>.toast</code> 上。</p>
+    <pre>
+        <code>
+            <pre>
+                <code>
+            &lt;form&gt;
+              &lt;div class="mb-3"&gt;
+                &lt;label for="selectToastPlacement"&gt;Toast placement&lt;/label&gt;
+                &lt;select class="form-select mt-2" id="selectToastPlacement"&gt;
+                  &lt;option value="" selected&gt;Select a position...&lt;/option&gt;
+                  &lt;option value="top-0 start-0"&gt;Top left&lt;/option&gt;
+                  &lt;option value="top-0 start-50 translate-middle-x"&gt;Top center&lt;/option&gt;
+                  &lt;option value="top-0 end-0"&gt;Top right&lt;/option&gt;
+                  &lt;option value="top-50 start-0 translate-middle-y"&gt;Middle left&lt;/option&gt;
+                  &lt;option value="top-50 start-50 translate-middle"&gt;Middle center&lt;/option&gt;
+                  &lt;option value="top-50 end-0 translate-middle-y"&gt;Middle right&lt;/option&gt;
+                  &lt;option value="bottom-0 start-0"&gt;Bottom left&lt;/option&gt;
+                  &lt;option value="bottom-0 start-50 translate-middle-x"&gt;Bottom center&lt;/option&gt;
+                  &lt;option value="bottom-0 end-0"&gt;Bottom right&lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+            &lt;div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts"&gt;
+              &lt;div class="toast-container position-absolute p-3" id="toastPlacement"&gt;
+                &lt;div class="toast"&gt;
+                  &lt;div class="toast-header"&gt;
+                    &lt;img src="..." class="rounded me-2" alt="..."&gt;
+                    &lt;strong class="me-auto"&gt;Bootstrap&lt;/strong&gt;
+                    &lt;small&gt;11 mins ago&lt;/small&gt;
+                  &lt;/div&gt;
+                  &lt;div class="toast-body"&gt;
+                    Hello, world! This is a toast message.
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+                </code>
+            </pre>
+        </code>
+    </pre>
+    <br>
+    <p>對於會推播更多通知的系統，請考慮使用包裝元素的方式，讓它們可以堆疊顯示。</p>
+    <pre>
+        <code>
+            <pre>
+                <code>
+            &lt;div&gt;
+                &lt;div aria-live="polite" aria-atomic="true" class="position-relative"&gt;
+                    &lt;!-- Position it: --&gt;
+                    &lt;!-- - `.toast-container` for spacing between toasts --&gt;
+                    &lt;!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner --&gt;
+                    &lt;!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  --&gt;
+                    &lt;div class="toast-container position-absolute top-0 end-0 p-3"&gt;
+            
+                        &lt;!-- Then put toasts within --&gt;
+                        &lt;div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"&gt;
+                            &lt;div class="toast-header"&gt;
+                                &lt;svg class="bd-placeholder-img rounded me-2" width="20" height="20"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"
+                                    focusable="false"&gt;
+                                    &lt;rect width="100%" height="100%" fill="#007aff"&gt;&lt;/rect&gt;
+                                &lt;/svg&gt;
+            
+                                &lt;strong class="me-auto"&gt;Bootstrap&lt;/strong&gt;
+                                &lt;small class="text-muted"&gt;just now&lt;/small&gt;
+                                &lt;button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div class="toast-body"&gt;
+                                See? Just like this.
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+            
+                        &lt;div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"&gt;
+                            &lt;div class="toast-header"&gt;
+                                &lt;svg class="bd-placeholder-img rounded me-2" width="20" height="20"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"
+                                    focusable="false"&gt;
+                                    &lt;rect width="100%" height="100%" fill="#007aff"&gt;&lt;/rect&gt;
+                                &lt;/svg&gt;
+            
+                                &lt;strong class="me-auto"&gt;Bootstrap&lt;/strong&gt;
+                                &lt;small class="text-muted"&gt;2 seconds ago&lt;/small&gt;
+                                &lt;button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div class="toast-body"&gt;
+                                Heads up, toasts will stack automatically
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+                </code>
+            </pre>
+        </code>
+    </pre>
+    <br>
+    <p>您還可以使用 flexbox 通用類別來對吐司做水平 和/或 垂直的對齊。</p>
+    <div class="bg-dark d-flex">
+        <!-- Flexbox container for aligning the toasts -->
+        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+            <!-- Then put toasts within -->
+            <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#007aff"></rect>
+                    </svg>
+    
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>親和性</h2>
+    <p>吐司元件對於訪問者或用戶來說是一個小小的干擾，所以為了幫助那些使用螢幕閱讀器和類似輔助技術的人，你應該將吐司元件包裝在 <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"><code>aria-live</code> region</a> 中。螢幕閱讀器會自動讀出 live region 中的改變 (例如：插入 / 更新吐司元件)，而不需要轉移用戶的焦點或以其他方式中斷用戶。另外，加入 <code>aria-atomic="true"</code> 以確保整個吐司元件都會被讀取為單一個（atomic）單位，而不只是讀出改變的部分 (如果你只更新部分吐司的內容，或者在稍後的時間點顯示相同的吐司內容，將可能會導致問題)。如果所要顯示的訊息對於該處理程序是很重要的，例如：表單中的錯誤列表，請使用 <a href="/docs/5.1/components/alerts/">警報 (Alerts)</a> 元件而不是吐司。</p>
+    <p>請注意，在生成或更新吐司之前，必須在標記中包含活動區域 (live region)。如果您同時動態生成兩者並將它們插入頁面，則輔助技術通常不會讀出它們。</p>
+    <p>你還需要根據內容調整 <code>role</code> 和 <code>aria-live</code> 的等級。如果它是一個重要的訊息，例如：錯誤訊息，請使用 <code>role="alert" aria-live="assertive"</code>，否則請使用 <code>role="status" aria-live="polite"</code> 屬性。</p>
+    <p>當您顯示的內容有改變時，請務必更新 <a href="#options"><code>delay</code> timeout</a> 以確保使用者有足夠的時間閱讀吐司。</p>
+    <pre>
+        <code>
+            <pre>
+                <code>
+            &lt;div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-bs-delay="10000"&gt;
+              &lt;div role="alert" aria-live="assertive" aria-atomic="true"&gt;...&lt;/div&gt;
+            &lt;/div&gt;
+                </code>
+            </pre>
+        </code>
+    </pre>
+    <br>
+    <p>當使用 <code>autohide: false</code> 時，必須增加一個關閉的按鈕，讓用戶可以關閉吐司。</p>
+    <div class="bg-light">
+        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade show" data-bs-autohide="false">
+            <div class="toast-header">
+                <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#007aff"></rect>
+                </svg>
+    
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+    <br>
+    <p>雖然從技術上來講可以在 toast 添加 可聚焦/可操作 的控件 (例如附加按鈕或是連結)，但您應該避免在自動隱藏的 toast 這樣做。即使你給 toast 一個很長的 <a href="#options"><code>delay</code> timeout</a>，鍵盤和輔助技術使用者可能會發現很難及時找到 toast 來採取行動 (因為 toast 在顯示時沒有獲得焦點)。如果你必須有進一步的控制，我們建議使用帶有 <code>autohide: false</code> 的 toast。</p>
+    
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var toastTrigger = document.getElementById('liveToastBtn')
+            var toastLiveExample = document.getElementById('liveToast')
+            if (toastTrigger) {
+            toastTrigger.addEventListener('click', function () {
+                    var toast = new bootstrap.Toast(toastLiveExample)
+
+                    toast.show()
+                })
+        }
+    </script>
+</body>
+
+</html>
+
+

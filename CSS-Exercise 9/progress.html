@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>進度條 (Progress)</h1>
+    <p>使用 Bootstrap 自定義進度條的文件和範例，這些進度條支援堆疊、動態背景和文字標籤。</p>
+
+    <h2>如何運作</h2>
+    <p>進度條元件使用兩個 HTML 元素，一些 CSS 設定寬度以及一些屬性設定而成。我們不使用 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">HTML5 <code>&lt;progress&gt;</code> 元素</a>，以確保您可以堆疊進度條，增加動畫、更換文字標籤。</p>
+    <ul>
+        <li>我們在外層使用 <code>.progress</code> 來指定進度條的最大值。</li>
+        <li>我們在內層使用 <code>.progress-bar</code> 來指定進度條目前的值。</li>
+        <li><code>.progress-bar</code> 需要 inline 設定、通用類別或是客製 CSS 來設定它們的寬度。</li>
+        <li><code>.progress-bar</code> 也需要一些 <code>role</code> 和 <code>aria</code> 屬性來使其具有親和性。</li>
+    </ul>
+    <p>集結以上所有，您將得到以下範例。</p>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <br>
+    <p>Bootstrap 提供幾個 <a href="/docs/5.1/utilities/sizing/">寬度通用類別設定</a>。基於您的需求，這些將幫助您快速設定進度條。</p>
+    <div class="progress">
+        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <h2>標籤</h2>
+    <p>在 <code>.progress-bar</code> 中放置文字內容，將標籤添加到進度條。</p>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div>
+
+    <h2>高度</h2>
+    <p>我們只有在 <code>.progress</code> 上設置一個 <code>height</code> 值，如果改變這個值，那麼內部的 <code>.progress-bar</code> 就會自動調整大小。</p>
+    <div class="progress" style="height: 1px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <div class="progress" style="height: 20px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    
+    <h2>背景</h2>
+    <p>使用背景通用類別更改各個進度條的外觀。</p>
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+
+    <h2>多個進度條</h2>
+    <p>如果您需要，可在一個進度條元件中加入多個進度條。</p>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
+
+    <h2>條紋式</h2>
+    <p>將 <code>.progress-bar-striped</code> 加到任何 <code>.progress-bar</code> 中，就能透過 CSS 漸變對進度條的背景顏色加上條紋。</p>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10"
+            aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
+            aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
+            aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75"
+            aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <br>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100"
+            aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <h2>動態條紋</h2>
+    <p>條紋漸變也可以製成動畫。 將 <code>.progress-bar-animated</code> 加到 <code>.progress-bar</code> 中，透過 CSS3 繪製從右到左的動態效果。</p>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+

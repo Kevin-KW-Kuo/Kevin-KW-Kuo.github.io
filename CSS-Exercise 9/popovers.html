@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popovers</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>彈出提示框 (Popovers)</h1>
+    <p>Bootstrap 彈出提示框的文件與範例，風格類似 iOS，可加在網頁上的任何元素上。</p>
+
+    <h2>概觀</h2>
+    <p>使用彈出提示框插件時應該了解的事情：</p>
+    <ul>
+        <li>彈出提示框需依靠第三方函式庫 <a href="https://popper.js.org/">Popper</a> 進行定位。您必須在 bootstrap.js 之前引入 <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js">popper.min.js</a> 或是使用已經包含 Popper 的 <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> 讓彈出提示框運作。</li>
+        <li>彈出提示框需要 <a href="/docs/5.1/components/tooltips/">工具提示插件</a> 作為依賴項目。</li>
+        <li>出於效能上的考量，彈出提示框是選擇性加入的，因此<strong>您必須自行初始化</strong> 。</li>
+        <li><code>title</code> 和 <code>content</code> 值為空時，將永遠不會顯示彈出提示框。</li>
+        <li>強調 <code>container: 'body'</code> 以避免在更複雜的元件 (例如 Input 群組、 button 群組等等) 中出現渲染問題。</li>
+        <li>在隱藏的元素中，觸發彈出提示框是不會作用的。</li>
+        <li><code>.disabled</code> 或 <code>disabled</code> 元素的彈出提示框必須在外層元素上觸發。</li>
+        <li>當在跨多行的錨點中觸發時，彈出提示框會定位於整體寬度的中間。在您的 <code>&lt;a&gt;</code> 元素上使用 <code>.text-nowrap</code> 來避免這樣的行為。</li>
+        <li>必須先隱藏彈出提示框，然後才能從 DOM 中刪除相應的元素。</li>
+        <li>彈出提示框可以藉由 shadow DOM 中的元素觸發。</li>
+    </ul>
+    <div>
+        By default, this component uses the built-in content sanitizer, which strips out any HTML elements that are not explicitly allowed. See the <a href="/docs/5.1/getting-started/javascript/#sanitizer">sanitizer section in our JavaScript documentation</a> for more details.
+    </div>
+    <div>
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+    <p>繼續閱讀一些範例來了解彈出提示框是如何運作的</p>
+
+    <h2>範例: 在任何地方啟用彈出提示框</h2>
+    <p>在頁面上初始化所有彈出提示框的一種方法是透過 <code>data-bs-toggle</code> 屬性來選擇它們：</p>
+    <pre>
+        <code>
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+            })
+        </code>
+    </pre>
+
+    <h2>範例: 使用 <code>container</code> 選項<a class="anchorjs-link " href="#example-using-the-container-option"></a></h2>
+    <p>當您在父元素上有一些干擾彈出提示框的樣式時，您將需要指定一個自訂的 <code>container</code> ，以便讓彈出提示框的 HTML 顯示在該元素中。</p>
+    <pre>
+        <code>
+            var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+                container: 'body'
+            })
+        </code>
+    </pre>
+    <br>
+    <h3>範例</h3>
+    <button type="button" class="btn btn-lg btn-danger example-popover" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+    <br><br>
+    <h3>四個方向</h3>
+    <p>共有四個選項：top, right, bottom, 和 left 對齊。在 Bootstrap 的 RTL 中，方向會被鏡像。</p>
+    <button type="button" class="btn btn-secondary top_popover" data-bs-container="body" data-bs-toggle="popover"
+        data-bs-placement="top" data-bs-content="Top popover">
+        Popover on top
+    </button>
+    <button type="button" class="btn btn-secondary right_popover" data-bs-container="body" data-bs-toggle="popover"
+        data-bs-placement="right" data-bs-content="Right popover">
+        Popover on right
+    </button>
+    <button type="button" class="btn btn-secondary bottom_popover" data-bs-container="body" data-bs-toggle="popover"
+        data-bs-placement="bottom" data-bs-content="Bottom popover">
+        Popover on bottom
+    </button>
+    <button type="button" class="btn btn-secondary left_popover" data-bs-container="body" data-bs-toggle="popover"
+        data-bs-placement="left" data-bs-content="Left popover">
+        Popover on left
+    </button>
+    <br><br>
+    <h3>下次點擊移除</h3>
+    <p>使用 <code>focus</code> 觸發，當用戶點擊切換元素以外的其他元素時，會移除這個彈出提示框。</p>
+    <div>
+        <h4 id="下次點擊移除必須使用特定標籤">下次點擊移除必須使用特定標籤</h4>
+        <p>為了跨瀏覽器與跨平台運用，您必須使用 <code>&lt;a&gt;</code> 標籤, <em>而不是</em> <code>&lt;button&gt;</code> 標籤，且必須包含 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex"><code>tabindex</code></a> 屬性.
+        </p>
+    </div>
+    <a tabindex="0" class="btn btn-lg btn-danger popover-dismiss" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+    <pre>
+        <code>
+            var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+                trigger: 'focus'
+            })
+        </code>
+    </pre>
+    <br><br>
+    <h3>禁用元素</h3>
+    <p>具有 <code>disabled</code> 屬性的元素是不能互動的，也就是說使用者無法 hover 或是點擊它們來觸發彈出提示框（或是工具提示框）。如果想要啟用，請從外層的 <code>&lt;div&gt;</code> 或 <code>&lt;span&gt;</code>觸發彈出提示框，最好使用 <code>tabindex="0"</code> 使鍵盤聚焦。</p>
+    <p>對於禁用的彈出提示框觸發，您可能傾向使用 <code>data-bs-trigger="hover focus"</code> 來直接為用戶提供視覺回饋，因為用戶預期不會去 <em>點擊</em> 禁用的元素。</p>
+    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+        <button class="btn btn-primary" type="button" disabled>Disabled button</button>
+    </span>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var example_popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+                container: 'body'
+            })
+            var top_popover = new bootstrap.Popover(document.querySelector('.top_popover'), {
+                container: 'body'
+            })
+            var right_popover = new bootstrap.Popover(document.querySelector('.right_popover'), {
+                container: 'body'
+            })
+            var bottom_popover = new bootstrap.Popover(document.querySelector('.bottom_popover'), {
+                container: 'body'
+            })
+            var left_popover = new bootstrap.Popover(document.querySelector('.left_popover'), {
+                container: 'body'
+            })
+            var popover_dismiss = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+                trigger: 'focus'
+            })
+        });
+    </script>
+</body>
+
+</html>
+
+

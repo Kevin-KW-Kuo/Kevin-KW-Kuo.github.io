@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breadcrumb</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>麵包屑 (Breadcrumb)</h1>
+    <p>指示當前頁面在導航層次結構中的位置，該導航層次結構通過 CSS 自動添加分隔符。</p>
+
+    <h2>範例</h2>
+    使用帶有連結的有序項目列表或無序項目列表來建立樣式單純​​的麵包屑。根據需要來增加額外的通用類別樣式。
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+    </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+
+    <h2>分隔符</h2>
+    <p>分隔符透過 <code>::before</code> 以及 content 而自動被加入在 CSS 中。可以透過修改本地 CSS 自定義屬性 <code>--bs-breadcrumb-divider</code> 或 <code>$breadcrumb-divider</code> Sass 變數來改變，如有需要還可以透過 <code>$breadcrumb-divider-flipped</code> 的 RTL 對應項。預設使用 Sass 變數為自定義屬性的備案。這樣您將獲得一個全域分隔符，並且無需重新編譯 CSS 就能覆蓋該分隔符。</p>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+    </nav>
+    <p>當使用 Sass 進行更動時，需要使用 quote 函式生成字串周圍的引號。例如，> 用作分隔符：</p>
+    <code>$breadcrumb-divider: quote(">");</code>
+    <p>也可以使用嵌入式 SVG 圖示。通過我們的 CSS 自定義屬性，或是使用 Sass 變數來應用它。</p>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+        aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+    </nav>
+    <code>$breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E");</code>
+    <p>也可以透過設定 <code>--bs-breadcrumb-divider: '';</code> 來移除分隔符（CSS 自定義屬性中的空字串作為值），或是將 Sass 變數設置為 <code>$breadcrumb-divider: none;</code>。</p>
+    <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+    </nav>
+    <code>$breadcrumb-divider: none;</code>
+
+    <h2>親和性</h2>
+    <p>由於麵包屑提供了導航功能，所以增加一個有意義的標籤像是 <code>aria-label="breadcrumb"</code> 來描述 nav 元素的導航說明，以及應用 <code>aria-current="page"</code> 到此群組的最後一個項目，表示這是當前頁面。</p>
+    <p>觀看 WAI-ARIA Authoring Practices for the breadcrumb pattern 取得更多資訊。</p>
+    
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

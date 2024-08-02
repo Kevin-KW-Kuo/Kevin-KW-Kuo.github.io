@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offcanvas</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>Offcanvas (畫布)</h1>
+    <p>使用一些類別和我們的 JavaScript 套件，將隱藏的側邊欄建構到你的專案中，用於導航、購物車等等。</p>
+
+    <h2>如何運作</h2>
+    <p>Offcanvas 是一個側邊欄元件，可以通過 JavaScript 切換以從視窗的左側、右側或底部邊緣顯示。按鈕或錨點作為附加到你切換的特定元素觸發器，<code>data</code> 屬性用於調用我們的 JavaScript.</p>
+    <ul>
+        <li>Offcanvas 與互動視窗共享一些相同的 JavaScript 程式碼。從概念上講，他們非常相似，但他們是獨立的元件。</li>
+        <li>類似地，offcanvas 樣式和尺寸的一些 <a href="#sass">source Sass</a> 變數是從互動視窗的變數繼承的。</li>
+        <li>顯示時，offcanvas 包含一個預設背景，可以點擊以隱藏 offcanvas。</li>
+        <li>和互動視窗相似，一次只能顯示一個 offcanvas。</li>
+    </ul>
+    <p><strong>小心!</strong> 鑑於 CSS 處理動畫的方式，你不能在 <code>.offcanvas</code> 元素上使用 <code>margin</code> 或 <code>translate</code>。相反，將此類別作為獨立的包裝元素。</p>
+    <div class="bd-callout bd-callout-info">
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+
+    <h2>範例</h2>
+    <br>
+    <h3>Offcanvas 元件</h3>
+    <p>下方是一個預設顯示的 offcanvas 範例 (通過 <code>.offcanvas</code> 上的 <code>.show</code> )。Offcanvas 支援包括帶有關閉按鈕的標題和一些初始 <code>padding</code> 的 optional body class。我們建議您盡可能在 offcanvas header 包含關閉操作，或是提供明確的關閉操作。</p>
+    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvasExample">
+        Link with href
+    </a>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.
+        </div>
+    </div>
+    <br>
+    <br>
+    <h3>動態範例</h3>
+    <p>使用下面的按鈕顯示和隱藏 offcanvas 通過 JavaScript 切換 <code>.offcanvas</code> 上的 <code>.show</code> 類別。</p>
+    <ul>
+        <li><code>.offcanvas</code> 隱藏內容 (預設)</li>
+        <li><code>.offcanvas.show</code> 顯示內容</li>
+    </ul>
+    <p>你可以使用帶有 <code>href</code> 屬性的連結，或是帶有 <code>data-bs-target</code> 屬性的按鈕。在這兩種情況下，都需要 <code>data-bs-toggle="offcanvas"</code>。</p>
+    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+        aria-controls="offcanvasExample">
+        Link with href
+    </a>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample">
+        Button with data-bs-target
+    </button>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists,
+                etc.
+            </div>
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2>位置</h2>
+    <p>Offcanvas 元件沒有預設位置，因此你必須添加以下其中一個類別：</p>
+    <ul>
+        <li><code>.offcanvas-start</code> 將 offcanvas 放在視窗的左側 (如上所式)</li>
+        <li><code>.offcanvas-end</code> 將 offcanvas 放在視窗的右側</li>
+        <li><code>.offcanvas-top</code> 將 offcanvas 放在視窗的頂部</li>
+        <li><code>.offcanvas-bottom</code> 將 offcanvas 放在視窗的底部</li>
+    </ul>
+    <p>嘗試下方的 top、right 以及 bottom 範例。</p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasTopLabel">Offcanvas top</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            ...
+        </div>
+    </div>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        ...
+    </div>
+    </div>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+        ...
+    </div>
+    </div>
+
+    <h2>背景</h2>
+    <p>當 Offcanvas 和它的背景顯示時，<code>&lt;body&gt;</code> 元素禁止滾動。使用 <code>data-bs-scroll</code> 屬性切換 <code>&lt;body&gt;</code> 滾動和使用 <code>data-bs-backdrop</code> 切換背景。</p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+        aria-controls="offcanvasScrolling">Enable body scrolling</button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop"
+        aria-controls="offcanvasWithBackdrop">Enable backdrop (default)</button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
+        aria-labelledby="offcanvasWithBackdropLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>.....</p>
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+    </div>
+
+    <h2>無障礙</h2>
+    <p>由於 Offcanvas 面板在概念上是一個互動對話框視窗，請務必將 <code>aria-labelledby="..."</code>—引用 Offcanvas 標題—添加到 <code>.offcanvas</code>。請注意，你不需要加上 <code>role="dialog"</code>，因為我們已經通過 JavaScript 添加了。</p>
+
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

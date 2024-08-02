@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navs and tabs</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>導覽與頁籤 (Navs and tabs)</h1>
+    <p>如何使用 Bootstrap 包含導覽元件的文件和範例。</p>
+
+    <h2>基礎導覽</h2>
+    <p>Bootstrap 中提供的導覽共用通用標記和樣式，從基礎的 <code>.nav</code> 到啟用與禁用的狀態。交換使用修飾符 class 以在各個樣式之間切換。</p>
+    <p>基礎的 <code>.nav</code> 元件使用 flexbox 構建，並提供了堅實的基礎以構建所有類型的導覽元件。它包括一些樣式覆寫（為了與列表一同使用）、用於提供更大點擊範圍的連結 padding，以及基本的禁用樣式。</p>
+    <div>
+        <p>基礎的 <code>.nav</code> 元件不包含任何 <code>.active</code> 狀態。以下範例包含了 active 類別，主要是為了說明這個 class 不會觸發任何特殊的樣式。</p>
+        <p>如果要將啟用狀態傳遞給輔助技術，請使用 <code>aria-current</code> 屬性 - 為當前的頁面賦予 <code>page</code> 屬性，或賦予目前所指向的項目 <code>true</code> 屬性。</p>
+    </div>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <p>class 可以使用在很多地方，因此您的標記可以超級靈活。如果項目的順序很重要，可以使用與 <code>&lt;ul&gt;</code> 類似的 <code>&lt;ol&gt;</code>，或者使用 <code>&lt;nav&gt;</code> 元素。因為 <code>.nav</code> 使用 <code>display: flex</code>，因此 nav-link 與 nav-item 的行為一樣，卻不需要有額外的標記。</p>
+    <nav class="nav">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link disabled">Disabled</a>
+    </nav>
+
+    <h2>可用樣式</h2>
+    <p>使用修飾符、通用類別更改 <code>.nav</code> 元件的樣式。依據需要混合搭配或自行建立。</p>
+
+
+    <h2>水平對齊</h2>
+    <p>使用 <a href="/docs/5.1/layout/grid/#horizontal-alignment">flexbox 通用類別</a> 更改導覽的水平對齊方式。預設情況下導覽會向左對齊，但您可以輕鬆地將其更改為向中心或向右對齊。</p>
+    <p>使用 <code>.justify-content-center</code> 置中對齊:</p>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <p>使用 <code>.justify-content-end</code> 置中對齊:</p>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+
+    <h2>垂直對齊</h2>
+    <p>通過使用 <code>.flex-column</code> 通用類別更改 flex 的軸線方向以堆疊導覽。如果只希望在特定的 viewports 下堆疊，可使用響應式版本（例如 <code>.flex-sm-column</code>）。</p>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <p>和往常一樣，垂直導覽也是可以沒有 <code>&lt;ul&gt;</code>。.</p>
+    <nav class="nav flex-column">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link disabled">Disabled</a>
+    </nav>
+
+    <h2>分頁標籤</h2>
+    <p>使用基本的導覽，並加入 <code>.nav-tabs</code> 以生成具有分頁標籤的介面。透過我們的 <a href="#javascript-behavior">分頁 JavaScript 插件</a> 來創造可切換的區塊。</p>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+
+    <h2>膠囊狀</h2>
+    <p>使用相同的 HTML，但使用 <code>.nav-pills</code> 取代：</p>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+
+    <h2>填充和對齊</h2>
+    <p><code>.nav</code> 內容有兩種寬度擴展用的 Class，使用 <code>.nav-fill</code> 會將 <code>.nav-item</code> 內容按照比例分配空間。注意，這會佔用所有的水平空間，但並不是每個導覽項目都具有相同寬度。</p>
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Much longer nav link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <br>
+    <p>當使用 <code>&lt;nav&gt;</code> 導覽時，您可以忽略 <code>.nav-item</code>，因為客製化 <code>&lt;a&gt;</code> 元素的樣式僅需要 <code>.nav-link</code>。</p>
+    <nav class="nav nav-pills nav-fill">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+        <a class="nav-link" href="#">Much longer nav link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link disabled">Disabled</a>
+    </nav>
+    <br>
+    <p>創建等寬元素請使用 <code>.nav-justified</code>。 所有的水平空間將被導覽連結佔據，但與上面的 <code>.nav-fill</code> 不同，每個導覽項都將是相同的寬度。</p>
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Much longer nav link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <br>
+    <p>與使用 <code>&lt;nav&gt;</code> 導覽中的 <code>.nav-fill</code> 範例類似。</p>
+    <nav class="nav nav-pills nav-justified">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+        <a class="nav-link" href="#">Much longer nav link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link disabled">Disabled</a>
+    </nav>
+
+    <h2>使用 flex 通用類別</h2>
+    <p>如果需要響應式的導覽變化，請使用一系列 <a href="/docs/5.1/utilities/flex/">flexbox 通用類別</a>。這些通用類別在中斷點之間提供更多的自定義設定。 在下面的範例中，我們的導覽將在最小中斷點以下堆疊，並從 small 斷點開始採用水平排版以填滿所有可用寬度。</p>
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Active</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="#">Longer nav link</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+        <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
+    </nav>
+
+    <h2>關於親和性</h2>
+    <p>如果您是將導覽當作導覽列使用，那麼請務必確保在符合邏輯的 <code>&lt;ul&gt;</code> 之父容器上加入 <code>role="navigation"</code>，或使用 <code>&lt;nav&gt;</code> 元素包裝整個導覽列。不要在 <code>&lt;ul&gt;</code> 本身添加 role，因為這樣做將會阻止輔助技術將其聲明為列表。</p>
+    <p>請注意，即使導覽列的視覺樣式透過 <code>.nav-tabs</code> 而呈現為分頁標籤，也應該 <strong>不會</strong> 被賦予 <code>role="tablist"</code>，<code>role="tab"</code> 或 <code>role="tabpanel"</code> 屬性。這些僅適用於動態分頁標籤介面，如 <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">WAI ARIA Authoring Practices</a> 中描述。相關範例，請參閱本節中的 <a href="#javascript-behavior">JavaScript behavior</a>。在動態選項介面上不需要 <code>aria-current</code> 屬性，因為我們的 JavaScript 透過在活動頁籤上添加 <code>aria-selected="true"</code> 來處理選定狀態。</p>
+
+    <h2>使用下拉選單</h2>
+    <p>加入額外的 HTML 和 <a href="/docs/5.1/components/dropdowns/#usage">下拉選單 JavaScript 插件</a></p>
+    <br><br>
+    <h3>帶下拉選單的分頁標籤</h3>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <br>
+    <h3>膠囊狀的下拉選單</h3>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

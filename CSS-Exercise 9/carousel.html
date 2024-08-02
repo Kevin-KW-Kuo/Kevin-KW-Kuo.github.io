@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>輪播 (Carousel)</h1>
+    <p>用於循環顯示圖片元素、幻燈片或包含文本的輪播元件。</p>
+
+    <h2>如何運作</h2>
+    <p>輪播是一個用於循環顯示一系列內容的幻燈片，由 CSS 的 3D transform 以及一些 JavaScript 建構而成。它適用於一系列圖片、文本或自定義的標記，並包括對上一個 / 下一個控制項和指示器的支援。</p>
+    <p>在支持 <a href="https://www.w3.org/TR/page-visibility/">Page Visibility API</a> 的瀏覽器中，當網頁對用戶不可見時，輪播將避免滑動（例如瀏覽器分頁不是啟用狀態、瀏覽器視窗最小化時等）。</p>
+    <div class="bd-callout bd-callout-info">
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+    <br>
+    <p>請注意巢狀輪播並不支援，且輪播通常不符合無障礙標準。</p>
+
+    <h2>範例</h2>
+    <p>輪播不會自動標準化幻燈片的尺寸。因此，您可能需要使用額外的通用類別或自定義樣式將內容調整成適當的大小。雖然輪播支持上一個/下一個控制項和指示器，但是它們不是必備項目。可依照需求添加和自定義。</p>
+    <p>需要將 <code>.active</code> 添加到其中一個輪播元素上，否則輪播將不可見。另外一定要在 <code>.carousel</code> 上為控制項元件設置的一個唯一的 <code>id</code>，特別是當你在一個頁面上使用多個輪播的時候。控制項和指示器元素必須具有與 <code>.carousel</code> 元素的 <code>id</code> 符合的 <code>data-bs-target</code> 屬性 (或是連結的 <code>href</code> )。</p>
+
+    <h2>僅有幻燈片</h2>
+    <p>這是一個只有幻燈片的輪播。 請注意在輪播圖片上存在 <code>.d-block</code> 和 <code>.w-100</code>，以避免瀏覽器預設的圖像對齊。</p>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+            </div>
+        </div>
+    </div>
+
+    <h2>包含控制項</h2>
+    <p>加入上一個與下一個控制項時，我們建議使用 <code>button</code> 元素，當然你也可以使用帶有 <code>role="button"</code> 的 <code>a</code> 元素。</p>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h2>包含指示器</h2>
+    <p>也可以將指示器與控制項一起添加到輪播中</p>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h2>包含字幕</h2>
+    <p>在任意 <code>.carousel-item</code> 中使用 <code>.carousel-caption</code> 替幻燈片添加字幕。可以選擇使用 <a href="/docs/5.1/utilities/display/">display 通用類別</a>輕易地在較小的 viewport 上隱藏它們，如下所示，一開始將會用 <code>.d-none</code> 隱藏，並使用 <code>.d-md-block</code> 讓它們在中型的設備上重新顯示。</p>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h2>淡入淡出</h2>
+    <p>將 <code>.carousel-fade</code> 加到輪播中，以使用淡入淡出的取代滑動的動畫效果。</p>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h2>個別設置 .carousel-item 的時間間隔</h2>
+    <p>在 <code>.carousel-item</code> 上添加 <code>data-bs-interval=""</code> 以更改自動循環至下一個項目的延遲時間。</p>
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="2000">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h2>禁用觸控滑動</h2>
+    <p>輪播支持在觸控設備上將幻燈片向左 / 向右滑動。這可以使用 <code>data-bs-touch</code> 屬性禁用。下方的範例也不包含 <code>data-bs-ride</code> 屬性並且具有 <code>data-bs-interval="false"</code> 所以它不會自動播放。</p>
+    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h2>Dark variant</h2>
+    <p>在 <code>.carousel</code> 上添加 <code>.carousel-dark</code> 以獲得暗色系的控制項、指示器及字幕。控制項已透過 CSS 屬性 filter
+        從它們預設的白色充填反轉。字幕與控制項具有用來自定義 <code>color</code> 及 <code>background-color</code> 的額外 Sass 變數。</p>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/cat.jpg" class="d-block w-100" alt="cat.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat2.jpg" class="d-block w-100" alt="cat2.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../image/cat3.jpg" class="d-block w-100" alt="cat3.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h2>Custom transition</h2>
+    <p><code>.carousel-item</code> 的轉換持續時間可以使用 <code>$carousel-transition-duration</code> Sass 變數進行更改，或是如果您使用的是已編譯的 CSS，則可以自定義樣式。如果應用了多個 transition，請首先確保定義 transform transition (eg. <code>transition: transform 2s ease, opacity .5s ease-out</code>)。</p>
+
+    <h2>Sass</h2>
+    <h3>Variables</h3>
+    <div class="highlight"><pre><code class="language-scss" data-lang="scss">
+        <span class="nv">$carousel-control-color</span><span class="o">:</span>             <span class="nv">$white</span><span class="p">;</span>
+        <span class="nv">$carousel-control-width</span><span class="o">:</span>             <span class="mi">15</span><span class="kt">%</span><span class="p">;</span>
+        <span class="nv">$carousel-control-opacity</span><span class="o">:</span>           <span class="mf">.5</span><span class="p">;</span>
+        <span class="nv">$carousel-control-hover-opacity</span><span class="o">:</span>     <span class="mf">.9</span><span class="p">;</span>
+        <span class="nv">$carousel-control-transition</span><span class="o">:</span>        <span class="ni">opacity</span> <span class="mf">.15</span><span class="kt">s</span> <span class="ni">ease</span><span class="p">;</span>
+        
+        <span class="nv">$carousel-indicator-width</span><span class="o">:</span>           <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+        <span class="nv">$carousel-indicator-height</span><span class="o">:</span>          <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+        <span class="nv">$carousel-indicator-hit-area-height</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+        <span class="nv">$carousel-indicator-spacer</span><span class="o">:</span>          <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+        <span class="nv">$carousel-indicator-opacity</span><span class="o">:</span>         <span class="mf">.5</span><span class="p">;</span>
+        <span class="nv">$carousel-indicator-active-bg</span><span class="o">:</span>       <span class="nv">$white</span><span class="p">;</span>
+        <span class="nv">$carousel-indicator-active-opacity</span><span class="o">:</span>  <span class="mi">1</span><span class="p">;</span>
+        <span class="nv">$carousel-indicator-transition</span><span class="o">:</span>      <span class="ni">opacity</span> <span class="mf">.6</span><span class="kt">s</span> <span class="ni">ease</span><span class="p">;</span>
+        
+        <span class="nv">$carousel-caption-width</span><span class="o">:</span>             <span class="mi">70</span><span class="kt">%</span><span class="p">;</span>
+        <span class="nv">$carousel-caption-color</span><span class="o">:</span>             <span class="nv">$white</span><span class="p">;</span>
+        <span class="nv">$carousel-caption-padding-y</span><span class="o">:</span>         <span class="mi">1</span><span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
+        <span class="nv">$carousel-caption-spacer</span><span class="o">:</span>            <span class="mi">1</span><span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
+        
+        <span class="nv">$carousel-control-icon-width</span><span class="o">:</span>        <span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+        
+        <span class="nv">$carousel-control-prev-icon-bg</span><span class="o">:</span>      <span class="sx">url("data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='</span><span class="si">#{</span><span class="nv">$carousel-control-color</span><span class="si">}</span><span class="sx">'&gt;&lt;path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/&gt;&lt;/svg&gt;")</span><span class="p">;</span>
+        <span class="nv">$carousel-control-next-icon-bg</span><span class="o">:</span>      <span class="sx">url("data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='</span><span class="si">#{</span><span class="nv">$carousel-control-color</span><span class="si">}</span><span class="sx">'&gt;&lt;path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/&gt;&lt;/svg&gt;")</span><span class="p">;</span>
+        
+        <span class="nv">$carousel-transition-duration</span><span class="o">:</span>       <span class="mf">.6</span><span class="kt">s</span><span class="p">;</span>
+        <span class="nv">$carousel-transition</span><span class="o">:</span>                <span class="ni">transform</span> <span class="nv">$carousel-transition-duration</span> <span class="ni">ease-in-out</span><span class="p">;</span> <span class="c1">// Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
+        </span><span class="c1"></span>
+        <span class="nv">$carousel-dark-indicator-active-bg</span><span class="o">:</span>  <span class="nv">$black</span><span class="p">;</span>
+        <span class="nv">$carousel-dark-caption-color</span><span class="o">:</span>        <span class="nv">$black</span><span class="p">;</span>
+        <span class="nv">$carousel-dark-control-icon-filter</span><span class="o">:</span>  <span class="nf">invert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="nf">grayscale</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+        </code></pre>
+    </div>
+
+    <h2>Usage</h2>
+    <h3>透過資料屬性</h3>
+    <p>使用資料屬性可以輕鬆的控制輪播的位置。<code>data-slide</code> 接受 <code>prev</code> 或 <code>next</code> 關鍵字，它們是用來改變幻燈片的相對位置 (相對於當前位置)。或者，使用 <code>data-bs-slide-to</code> 將原始幻燈片索引轉換到 <code>data-bs-slide-to="2"</code>，將幻燈片位置移動到以 <code>0</code> 開頭的特定索引。</p>
+    <p>當頁面載入的時候， <code>data-bs-ride="carousel"</code> 屬性會被用來標記一個輪播是為動態的。如果不使用 <code>data-bs-ride="carousel"</code> 來初始化輪播，你必須靠自己將其初始化。<strong>在同一個輪播中， <code>data-bs-ride="carousel"</code> 不能與 JavaScript 初始化同時使用(多餘且不必要)</strong></p>
+    <h3>透過 JavaScript</h3>
+    <p>使用以下語法手動呼叫輪播:</p>
+    <div class="highlight">
+       <pre>
+        <code>
+            var myCarousel = document.querySelector('#myCarousel')
+            var carousel = new bootstrap.Carousel(myCarousel)
+        </code>
+       </pre>
+    </div>
+    <h3>選項</h3>
+    <p>可以透過資料屬性或 JavaScript 調整選項。對於資料屬性，將選項名稱附加到 <code>data-bs-</code>，如 <code>data-bs-interval=""</code>。</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>interval</code></td>
+                <td>number</td>
+                <td><code>5000</code></td>
+                <td>自動循環項目之間的延遲時間。如果為 <code>false</code>，carousel 將不會自動循環。</td>
+            </tr>
+            <tr>
+                <td><code>keyboard</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>輪播是否應該回應鍵盤事件。</td>
+            </tr>
+            <tr>
+                <td><code>pause</code></td>
+                <td>string | boolean</td>
+                <td><code>'hover'</code></td>
+                <td>
+                    <p>如果設定為 <code>'hover'</code>，則在 <code>mouseenter</code> 上暫停輪播循環並在 <code>mouseleave</code> 上恢復輪播循環。如果設定為
+                        <code>false</code>，則滑鼠 hover 時不會暫停。</p>
+                    <p>在 touch-enabled 設備上，當設定為 <code>'hover'</code>，循環將在 <code>touchend</code> (一旦使用者與輪播互動)
+                        時暫停兩個間隔，然後自動恢復。請注意，這是對上述鼠標行為的補充。</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>ride</code></td>
+                <td>string | boolean</td>
+                <td><code>false</code></td>
+                <td>在使用者手動循環第一個項目後自動播放。如果設定為 <code>'carousel'</code>，則在加載時自動播放。</td>
+            </tr>
+            <tr>
+                <td><code>wrap</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>輪播是否應該連續循環，或是會停止。</td>
+            </tr>
+            <tr>
+                <td><code>touch</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>在觸控裝置上輪播是否支持向左/向右的交互滑動。</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>方法</h3>
+    <div class="bd-callout bd-callout-danger">
+        <h4 id="asynchronous-methods-and-transitions">Asynchronous methods and transitions</h4>
+        <p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They return to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
+        <p><a href="/docs/5.1/getting-started/javascript/#asynchronous-functions-and-transitions">See our JavaScript documentation for more information</a>.</p>
+    </div>
+    <p>可以使用輪播建構函式來建立一個範例。如下例，使用額外的選項初始化，並讓項目開始循環。</p>
+    <div class="highlight">
+        <pre>
+            <code>
+                var myCarousel = document.querySelector('#myCarousel')
+                var carousel = new bootstrap.Carousel(myCarousel, {
+                    interval: 2000,
+                    wrap: false
+                })
+            </code>
+        </pre>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>cycle</code></td>
+                <td>由左至右循環播放。</td>
+            </tr>
+            <tr>
+                <td><code>pause</code></td>
+                <td>將物件的循環從輪播中停止。</td>
+            </tr>
+            <tr>
+                <td><code>prev</code></td>
+                <td>將輪播指向前一個物件。 <strong>在前一個物件顯示前回傳給調用者 </strong> (e.g., 在 <code>slid.bs.carousel</code> 事件發生之前)。</td>
+            </tr>
+            <tr>
+                <td><code>next</code></td>
+                <td>將輪播指向下一個物件。 <strong>在後一個物件顯示前回傳給調用者</strong> (e.g., 在 <code>slid.bs.carousel</code> 事件發生之前).</td>
+            </tr>
+            <tr>
+                <td><code>nextWhenVisible</code></td>
+                <td>如果頁面或是其父層不可見，就停止將輪播循環到下一個。<strong>在目標項目顯示前回傳給調用者</strong>。</td>
+            </tr>
+            <tr>
+                <td><code>to</code></td>
+                <td>&gt;將輪播指向特定的索引。(與陣列相同，從 0 開始)。<strong>在目標項目顯示前回傳給調用者</strong> (e.g., 在 <code>slid.bs.carousel</code>
+                    事件發生之前)。</td>
+            </tr>
+            <tr>
+                <td><code>dispose</code></td>
+                <td>銷毀一個元素的輪播。 (移除 DOM 元素上儲存的資料)</td>
+            </tr>
+            <tr>
+                <td>
+                    <code>getInstance</code>
+                </td>
+                <td>
+                    允許您獲取與 DOM 元素相關的 carousel 實例的靜態方法，你可以使用像是：<code>bootstrap.Carousel.getInstance(element)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>getOrCreateInstance</code>
+                </td>
+                <td>
+                    靜態方法，允許你獲取與 DOM 元素相關的 carousel 實例，或者在未初始化的情況下創建一個新實例。
+                    你可以使用像是：<code>bootstrap.Carousel.getOrCreateInstance(element)</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>事件</h3>
+    <p>Bootstrap 提供了兩個事件給予輪播使用。 兩個事件都具有以下附加屬性：</p>
+    <ul>
+        <li><code>direction</code>: 輪播滑動的方向 (<code>"left"</code> 或 <code>"right"</code>).</li>
+        <li><code>relatedTarget</code>: 被作為啟用的物件的 DOM 元素。</li>
+        <li><code>from</code>: 當前物件的索引</li>
+        <li><code>to</code>: 下一個物件的索引</li>
+    </ul>
+    <p>所有輪播事件都在輪播本身（即 <code>&lt;div class="carousel"&gt;</code>）下被觸發。</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>slide.bs.carousel</code></td>
+                <td>當調用 <code>slide</code> 方法時，此事件會立即觸發。</td>
+            </tr>
+            <tr>
+                <td><code>slid.bs.carousel</code></td>
+                <td>輪播完成切換後，此事件就被觸發。</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="highlight">
+        <pre>
+            <code>
+                var myCarousel = document.getElementById('myCarousel')
+                myCarousel.addEventListener('slide.bs.carousel', function () {
+                // do something...
+                })
+            </code>
+        </pre>
+    </div>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

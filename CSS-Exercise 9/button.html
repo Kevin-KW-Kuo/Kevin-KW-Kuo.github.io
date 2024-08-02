@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>按鈕 (Buttons)</h1>
+    <p>使用 Bootstrap 自定義的按鈕樣式來進行表單、對話方塊等操作，並支援多種大小、狀態等。</p>
+
+    <h2>範例</h2>
+    <p>Bootstrap 包括多個預先定義的按鈕樣式，每個都有自己的語義目的及更多的控制。</p>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+    <button type="button" class="btn btn-link">Link</button>
+
+    <h2>禁止文字換行</h2>
+    <p>可以在按鈕加入 <code>.text-nowrap</code> 來禁止按鈕文字換行，並可以在 Sass 裡設定 <code>$btn-white-space: nowrap </code> 以禁用每一個按鈕的文字換行。
+    </p>
+
+    <h2>按鈕標籤</h2>
+    <p><code>.btn</code> 被設計成需要與 button 元素一起使用。 但是，您也可以在 a 或 input 元素上使用這些 Class（儘管有些瀏覽器可能會使用稍微不同的渲染）。</p>
+    <p>當在用於觸發頁面內功能（例如折疊內容），而不是連結到新頁面或當前頁面中某一部分的 a 元素上使用按鈕 class 時，這些連結應該被賦予 <code>role="button"</code>
+        以適當地傳達他們的目的到螢幕閱讀器等網頁親合性技術。</p>
+    <a class="btn btn-primary" href="#" role="button">Link</a>
+    <button class="btn btn-primary" type="submit">Button</button>
+    <input class="btn btn-primary" type="button" value="Input">
+    <input class="btn btn-primary" type="submit" value="Submit">
+    <input class="btn btn-primary" type="reset" value="Reset">
+
+    <h2>Outline 按鈕樣式</h2>
+    <p>需要一個按鈕，但不是使用填滿的背景顏色？ 用 <code>.btn-outline-*</code> 替換預設修飾用的 Class，以移除任何按鈕上的所有背景色及背景圖。</p>
+    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    <button type="button" class="btn btn-outline-success">Success</button>
+    <button type="button" class="btn btn-outline-danger">Danger</button>
+    <button type="button" class="btn btn-outline-warning">Warning</button>
+    <button type="button" class="btn btn-outline-info">Info</button>
+    <button type="button" class="btn btn-outline-light">Light</button>
+    <button type="button" class="btn btn-outline-dark">Dark</button>
+
+    <h2>尺寸</h2>
+    <p>想要較大或較小的按鈕？加入 <code>.btn-lg</code> 或 <code>.btn-sm</code> 來套用尺寸。</p>
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+    <button type="button" class="btn btn-secondary btn-lg">Large button</button>
+    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+    <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+
+    <h2>禁用狀態</h2>
+    <p>透過將 disabled 布林屬性添加到任何 button 元素中，使按鈕看起來處於禁用狀態。被禁用的按鈕具有 <code>pointer-events: none</code>，以防止觸發滑入以及啟用狀態。</p>
+    <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
+    <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
+    <br>
+    <br>
+    <p>使用 a 元素的禁用其行為與其他按鈕略有不同：</p>
+    <ul>
+        <li>a 元素不支援 disabled 屬性，所以你必須添加 <code>.disabled</code> 使它在視覺上看起來被禁用。</li>
+        <li>加入一些友善的樣式，以禁用游標上的所有 <code>pointer-events</code>。</li>
+        <li>禁用按鈕應包含 <code>aria-disabled="true"</code> 屬性來向輔助性技術指示元素的狀態。</li>
+        <li>Disabled buttons using a should not include the href attribute.</li>
+    </ul>
+    <a class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Primary link</a>
+    <a class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Link</a>
+
+    <h2>連結功能警告</h2>
+    <p>為了涵蓋必須在禁用鏈接上保留 href 屬性的情況，<code>.disabled</code> 使用 <code>pointer-events: none</code> 來禁用 <a> 的連結功能。請注意，該 CSS
+            屬性尚未針對 HTML 標準化，但所有瀏覽器都支持。此外，即使在支持 <code>pointer-events: none</code>
+            的瀏覽器中，鍵盤導覽仍然不受影響，這意味著鍵盤使用者和輔助性技術的使用者仍然可以啟動這些連結。為了安全起見，除了 <code>aria-disabled="true"</code> 以外，也在這些連結上添加
+            <code>tabindex="-1"</code> 屬性防止他們套用 focus，並使用自定義的 JavaScript 來禁用它們的功能。</p>
+    <a href="#" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Primary
+        link</a>
+    <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>
+
+    <h2>區塊級別按鈕</h2>
+    <p>混合使用 display 和 gap 通用類別，建立跟 Bootstrap 4 一樣的響應式、滿版的的區塊級別按鈕堆疊。透過使用通用類別而非指定 button class，你可以更好的控制間距、對齊以及響應式等行為。</p>
+    <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-primary" type="button">Button</button>
+    </div>
+    <br>
+    <br>
+    <p>以下為一個響應式的範例，從垂直堆疊的按鈕群組開始，直到遇到 md 斷點才會把 <code>.d-grid</code> 替換為 <code>.d-md-block</code>，進而使 gap-2
+        通用類別無效化。縮放瀏覽器的大小以觀察它們的改變。</p>
+    <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-primary" type="button">Button</button>
+    </div>
+    <br>
+    <br>
+    <p>可以使用網格系統的欄 (column) 類別來調整區塊級別按鈕的寬度。舉例來說，可以用 <code>.col-6</code> 建立寬度 50% 的區塊級別按鈕，再用 <code>.mx-auto</code> 將其水平置中。
+    </p>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-primary" type="button">Button</button>
+    </div>
+    <br>
+    <br>
+    <p>方向為水平時，可以添加通用類別來對齊、調整按鈕。以下用我們前一個響應式的範例進行修改，在按鈕上加入了一些 flex, margin 通用類別，使其在非堆疊的情況下對齊右邊。</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2" type="button">Button</button>
+        <button class="btn btn-primary" type="button">Button</button>
+    </div>
+
+    <h2>按鈕插件</h2>
+    <p>可以使用按鈕插件建立簡單的 on/off 切換按鈕。</p>
+    <div>
+        視覺上，這些切換按鈕跟<a
+            href="/docs/5.1/forms/checks-radios/#checkbox-toggle-buttons">核取方塊切換按鈕</a>是相同的。然而它們透過輔助性技術所傳遞的訊息是不一樣的:
+        核取方塊切換按鈕會被螢幕閱讀器傳達為 “勾選”/“未勾選” (因為就算它們外表為按鈕，本質上仍然是核取方塊); 然而本節的切換按鈕則會被傳達為
+        “按鈕”/“按下按鈕”。這兩種方法之間的選擇取決於你想要建立哪一種切換，以及此按鈕是被傳達為核取方塊還是實際按鈕這件事會不會對用戶造成影響。
+    </div>
+
+    <h2>切換狀態</h2>
+    <p>加入 <code>data-bs-toggle="button"</code> 來切換按鈕的 <code>active</code> 狀態。如果想要預先切換按鈕狀態，則必須手動添加 <code>.active</code>
+        以及 <code>aria-pressed="true"</code> 以確保狀態有正確的傳達至輔助性技術。</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off">Toggle button</button>
+    <button type="button" class="btn btn-primary active" data-bs-toggle="button" autocomplete="off"
+        aria-pressed="true">Active toggle button</button>
+    <button type="button" class="btn btn-primary" disabled data-bs-toggle="button" autocomplete="off">Disabled toggle
+        button</button>
+    <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</a>
+    <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle
+        link</a>
+    <a class="btn btn-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle
+        link</a>
+
+    <h2>方法</h2>
+    <p>可以使用按鈕建構函式來建立按鈕實例，舉例來說:</p>
+    <pre>
+        <code>
+            var button = document.getElementById('myButton')
+            var bsButton = new bootstrap.Button(button)
+        </code>
+    </pre>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <code>toggle</code>
+                </td>
+                <td>
+                    切換 push 狀態。讓按鈕具有已觸發的外觀。
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>dispose</code>
+                </td>
+                <td>
+                    破壞元素的按鈕。 (移除儲存在 DOM 元素上的數據)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>getInstance</code>
+                </td>
+                <td>
+                    允許獲得與 DOM 元素相關按鈕實例的靜態方法，你可以像這樣使用它：<code>bootstrap.Button.getInstance(element)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>getOrCreateInstance</code>
+                </td>
+                <td>
+                    回傳與 DOM 元素相關按鈕實例的靜態方法，或者在未初始化的情況下，創建新的按鈕實例。
+                    你可以像這樣使用它：<code>bootstrap.Button.getOrCreateInstance(element)</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>舉例來說，如果要切換所有按鈕:</p>
+    <pre>
+        <code>
+        var buttons = document.querySelectorAll('.btn')
+        buttons.forEach(function (button) {
+            var button = new bootstrap.Button(button)
+            button.toggle()
+        })
+        </code>
+    </pre>
+    
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

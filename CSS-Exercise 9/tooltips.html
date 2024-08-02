@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltips</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>工具提示框 (Tooltips)</h1>
+    <p>如何透過 CSS 與 Javascript 添加自定義 Bootstrap 工具提示的文件與範例。其中 CSS3 用於動畫，data-bs-attributes 用於用於本地標題的儲存。</p>
+
+    <h2>概觀</h2>
+    <p>使用工具提示插件時應瞭解的事情如下：</p>
+    <ul>
+        <li>工具提示依靠第三方函式庫 <a href="https://popper.js.org/">Popper</a> 以進行定位。你必須在 bootstrap.js 之前加入 <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js">popper.min.js</a>，或是使用包含 Popper 的 <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> 讓工具提示可以運作。</li>
+        <li>出於效能原因工具提示是選擇性加入的，因此<strong>你必須自己將它們初始化</strong></li>
+        <li>標題長度為零的工具提示將不會被顯示。</li>
+        <li>指定 <code>container: 'body'</code> 以避免在更複雜的元件 (像是 input 群組、按鈕群組等) 中出現渲染問題。</li>
+        <li>隱藏元素上的工具提示將不會被觸發。</li>
+        <li><code>.disabled</code> 或 <code>disabled</code> 元素的工具提示必須在外層元素上被觸發。</li>
+        <li>被跨越多行的超連結觸發時，工具提示框將居中。在你的 <code>&lt;a&gt;</code> 連結上使用 <code>white-space: nowrap;</code> 來避免這種行為。</li>
+        <li>必須先隱藏工具提示框，然後才能從 DOM 中刪除相應的元素。</li>
+        <li>基於 shadow DOM 中的元素，工具提示框可以被觸發。</li>
+    </ul>
+    <div>
+        By default, this component uses the built-in content sanitizer, which strips out any HTML elements that are not explicitly allowed. See the <a href="/docs/5.1/getting-started/javascript/#sanitizer">sanitizer section in our JavaScript documentation</a> for more details.
+    </div>
+    <div >
+        該元件的動畫效果取決於 <code>prefers-reduced-motion</code> media queries。請參考 <a href="/docs/5.1/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>
+    </div>
+    <p>都明白了？太好了，讓我們透過一些例子看他們是如何運作的。</p>
+
+    <h2>範例：在任何地方啟用工具提示</h2>
+    <p>其中一種在頁面上初始化所有工具提示的方法是透過它們的 <code>data-bs-toggle</code> 屬性來選擇它們：</p>
+    <pre>
+        <code>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        </code>
+    </pre>
+
+    <h2>範例</h2>
+    <p>滑鼠移入以下連結，查看工具提示:</p>
+    <p class="muted">Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" title="" data-bs-original-title="Default tooltip">inline links</a> with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of <a href="#" data-bs-toggle="tooltip" title="Another tooltip">real text</a>. And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how <a href="#" data-bs-toggle="tooltip" title="" data-bs-original-title="Another one here too">these tooltips on links</a> can work in practice, once you use them on <a href="#" data-bs-toggle="tooltip" title="The last tip!">your own</a> site or project.
+    </p>
+    <p>將滑鼠移入以下按鈕，查看工具提示的四個方向：頂部、右側、底部和左側對齊。當使用 Bootstrap 的 RTL，這些方向會被鏡像。</p>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+        Tooltip on top
+    </button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
+        title="Tooltip on right">
+        Tooltip on right
+    </button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+        title="Tooltip on bottom">
+        Tooltip on bottom
+    </button>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
+        title="Tooltip on left">
+        Tooltip on left
+    </button>
+    <br>
+    <p>以及加入自定義 HTML:</p>
+    <pre>
+        <code>
+            <pre>
+                <code>
+            &lt;button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="&lt;em&gt;Tooltip&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;"&gt;
+                Tooltip with HTML
+            &lt;/button&gt;
+                </code>
+            </pre>
+        </code>
+    </pre>
+    <br>
+    <p>使用 SVG:</p>
+    <a href="#" class="d-inline-block" data-bs-toggle="tooltip" title="" data-bs-original-title="Default tooltip">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+            <rect width="100%" height="100%" fill="#563d7c"></rect>
+            <circle cx="50" cy="50" r="30" fill="#007bff"></circle>
+        </svg>
+    </a>
+    
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+</body>
+
+</html>
+
+

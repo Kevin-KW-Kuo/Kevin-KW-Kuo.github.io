@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/css_exercise_9.css">
+    <link rel="stylesheet" href="../@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>警報 (Alerts)</h1>
+    <p>使用靈活的警報消息為使用者操作提供上下文的內容回饋。</p>
+    
+    <h2>範例</h2>
+    <p>警報適用於任何長度的文本，以及可選的關閉按鈕。為了呈現正確的樣式，請必須使用 8 個內文樣式類別中的其中一個 (例如 <code>.alert-success</code>)。對於行內的移除，請使用 alerts JavaScript plugin。
+    </p>
+    <div class="bd-example">
+        <div class="alert alert-primary" role="alert">
+            A simple primary alert—check it out!
+        </div>
+        <div class="alert alert-secondary" role="alert">
+            A simple secondary alert—check it out!
+        </div>
+        <div class="alert alert-success" role="alert">
+            A simple success alert—check it out!
+        </div>
+        <div class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+        </div>
+        <div class="alert alert-warning" role="alert">
+            A simple warning alert—check it out!
+        </div>
+        <div class="alert alert-info" role="alert">
+            A simple info alert—check it out!
+        </div>
+        <div class="alert alert-light" role="alert">
+            A simple light alert—check it out!
+        </div>
+        <div class="alert alert-dark" role="alert">
+            A simple dark alert—check it out!
+        </div>
+    </div>
+
+    <h2>連結顏色</h2>
+    <p>使用 .alert-link 通用類別快速為警報中的連結增添合適的色彩。</p>
+    <div class="bd-example">
+        <div class="alert alert-primary" role="alert">
+            A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+        <div class="alert alert-secondary" role="alert">
+            A simple secondary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
+            like.
+        </div>
+        <div class="alert alert-success" role="alert">
+            A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+        <div class="alert alert-warning" role="alert">
+            A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+        <div class="alert alert-info" role="alert">
+            A simple info alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+        <div class="alert alert-light" role="alert">
+            A simple light alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+        <div class="alert alert-dark" role="alert">
+            A simple dark alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+    </div>
+
+    <h2>JavaScript 關閉 Alert</h2>
+    <p>
+        使用警報的 JavaScript 插件，他能夠將行內的警報移除，使用如下：
+        <ul>
+            <li>確認你有載入警報插件，或者是編譯後的 Bootstrap JavaScript。</li>
+            <li>如果你要自行編譯 JavaScript，編譯的版本記得將 requires util.js 加入。</li>
+            <li>加入解除用的按鈕並賦予 <code>.alert-dismissible</code>，如果你要將按鈕放在右上角的位置可以使用 .close。</li>
+            <li>解除用的按鈕加上 <code>data-dismiss="alert"</code> 屬性用來觸發 JavaScript 函式。請使用 button 元素，這可以在所有裝置上正常運行。</li>
+            <li>要以動態方式解除它們，可以使用 <code>.fade</code> 和 <code>.show</code>。</li>
+        </ul>
+    </p>
+    <div class="bd-example">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            A simple primary alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+            A simple secondary alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            A simple success alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            A simple danger alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            A simple warning alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            A simple info alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-light alert-dismissible fade show" role="alert">
+            A simple light alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            A simple dark alert—check it out!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <!-- 引入 Bootstrap JavaScript 文件 -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
